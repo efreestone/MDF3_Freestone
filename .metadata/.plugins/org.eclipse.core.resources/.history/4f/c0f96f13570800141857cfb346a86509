@@ -11,9 +11,6 @@
 package com.elijahfreestone.mdf3project1;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +20,6 @@ import android.view.MenuItem;
  * The Class MainActivity.
  */
 public class MainActivity extends Activity {
-	static Context myContext;
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -32,15 +28,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        myContext = this;
-        
-		if (NetworkConnection.connectionStatus(myContext)) {
-			System.out.println("Network Connection Exists");
-		} else {
-			// Show No Connection alert
-			noConnectionAlert();
-		}
+
     }
 
 
@@ -69,16 +57,4 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
-	public static void noConnectionAlert() {
-		// Create alert dialog for no connection
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.myContext).create();
-		alertDialog.setTitle(R.string.noConnectionTitle);
-		// Set alert message. setMessage only has a charSequence
-		// version so getString must be used.
-		alertDialog.setMessage(myContext.getString(R.string.noConnectionAlert));
-		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
-		alertDialog.show();
-	}
 }
-
