@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#ffffff"
-        android:text="Currency Converter" />
+         />
     
     <Button
         android:id="@+id/newReleaseButton"
@@ -20,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5dp"
-        
         android:clickable="true"
         android:text="Im a button"
         android:width="250dp" />
@@ -29,7 +27,6 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#ffffff"
         android:drawSelectorOnTop="false" />
 
 </LinearLayout>

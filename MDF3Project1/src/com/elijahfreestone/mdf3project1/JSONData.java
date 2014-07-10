@@ -46,39 +46,21 @@ public class JSONData {
 		// Create ArrayList with hashmap
 		myList = new ArrayList<HashMap<String, String>>();
 		JSONObject jsonObject = null;
-		JSONArray newReleaseArray = null;
 
 		try {
 			jsonObject = new JSONObject(JSONString);
-			newReleaseArray = jsonObject.getJSONArray("movies");
-			int arraySize = newReleaseArray.length();
-
-			// Loop through array from file and extract fields
-			for (int i = 0; i < arraySize; i++) {
-
-				dvdTitle = newReleaseArray.getJSONObject(i).getString("title");
-				// Log.i("displayData newReleaseArray", "Title: " + dvdTitle);
-				releaseDate = newReleaseArray.getJSONObject(i)
-						.getJSONObject("release_dates").getString("dvd");
-				// Log.i("displayData newReleaseArray", "Release Date: " +
-				// releaseDate);
-				movieRating = newReleaseArray.getJSONObject(i).getString(
-						"mpaa_rating");
-				criticRating = newReleaseArray.getJSONObject(i)
-						.getJSONObject("ratings").getString("critics_rating");
-
-
-				// Instantiate Hash Map for array and pass in strings with
-				// key/value pairs
-				HashMap<String, String> displayMap = new HashMap<String, String>();
-				displayMap.put("dvdTitle", dvdTitle);
-				displayMap.put("releaseDate", releaseDate);
-				displayMap.put("movieRating", movieRating);
-				displayMap.put("criticRating", criticRating);
-
-				// Add hash maps to array list
-				myList.add(displayMap);
-			}
+			JSONObject jsonFirstRatesObject = jsonObject.getJSONObject("rates");
+			//JSONObject jsonSecondRatesObject = jsonFirstRatesObject.getJSONObject("rates");
+			//int arraySize = newReleaseArray.length();
+			String newJSONString = jsonObject.toString();
+			Log.i("JSON File", "Rates: " + newJSONString); 
+			
+			double gbpValue = jsonFirstRatesObject.optDouble("GBP");  
+			
+			String gbpString = "GBP = " + gbpValue;
+			Log.i("JSON File", "GBP = " + gbpValue);
+			
+			MainActivity.testTextView.setText(gbpString);
 
 			// Create simple adapter and set up with array
 			SimpleAdapter listAdapter = new SimpleAdapter(myContext, myList,

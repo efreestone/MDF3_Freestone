@@ -23,7 +23,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -37,10 +39,13 @@ public class MainActivity extends Activity {
 	final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
+	
+	static TextView testTextView;
+	
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
-     */
+     */ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,8 @@ public class MainActivity extends Activity {
         
         //Grab instance of DataManager
         myDataManager = DataManager.getInstance();
+        
+        testTextView = (TextView) this.findViewById(R.id.test_textview);
 		
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);
@@ -58,6 +65,7 @@ public class MainActivity extends Activity {
 		if (fileExists) {
 			// Display the data to the listview automatically if file exists
 			JSONData.displayDataFromFile(); 
+			
 
 			Log.i("File", "File exists");
 		} else {
