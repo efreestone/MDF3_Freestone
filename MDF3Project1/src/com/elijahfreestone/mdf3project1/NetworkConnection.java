@@ -17,9 +17,11 @@ import android.net.NetworkInfo;
 // TODO: Auto-generated Javadoc
 /**
  * The Class NetworkConnection handles network connection testing before a call
- * to the API can be attempted
+ * to the API can be attempted.
  */
 public class NetworkConnection {
+	
+	/** The response string. */
 	static String responseString;
 
 	/**

@@ -1,9 +1,18 @@
+/*
+ * @author	Elijah Freestone 
+ *
+ * Project	MDF3Project1
+ * 
+ * Package	com.elijahfreestone.mdf3project1
+ * 
+ * Date		Jul 10, 2014
+ */
+
 package com.elijahfreestone.mdf3project1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -80,15 +89,42 @@ public class JSONData {
 			
 			Log.i("JSON File", gbpString);
 			
-			MainActivity.testTextView.setText(gbpString);
+			// Instantiate Hash Map for array and pass in strings with key/value pairs
+			HashMap<String, String> displayMap = new HashMap<String, String>();
+			displayMap.put(usdCode, usdString);
+			displayMap.put(eurCode, eurString);
+			displayMap.put(gbpCode, gbpString);
+			displayMap.put(inrCode, inrString);
+			displayMap.put(cadCode, cadString);
+			displayMap.put(audCode, audString);
+			displayMap.put(mxnCode, mxnString);
+			displayMap.put(cnyCode, cnyString);
+			displayMap.put(myrCode, myrString);
+			displayMap.put(aedCode, aedString);
+
+			// Add hash maps to array list
+			myList.add(displayMap);
+			
+			Log.i("JSON File", myList.toString());
+			
+			MainActivity.usdTV.setText(usdString);
+			MainActivity.eurTV.setText(eurString);
+			MainActivity.gbpTV.setText(gbpString);
+			MainActivity.inrTV.setText(inrString);
+			MainActivity.cadTV.setText(cadString);
+			MainActivity.audTV.setText(audString);
+			MainActivity.mxnTV.setText(mxnString);
+			MainActivity.cnyTV.setText(cnyString);
+			MainActivity.myrTV.setText(myrString);
+			MainActivity.aedTV.setText(aedString);
 
 			// Create simple adapter and set up with array
-			SimpleAdapter listAdapter = new SimpleAdapter(myContext, myList,
-					R.layout.listview_row, new String[] { "dvdTitle",
-							"releaseDate", "movieRating" }, new int[] {
-							R.id.currencyName, R.id.currencyValue });
+//			SimpleAdapter listAdapter = new SimpleAdapter(myContext, myList,
+//					R.layout.listview_row, new String[] { "dvdTitle",
+//							"releaseDate", "movieRating" }, new int[] {
+//							R.id.currencyName, R.id.currencyValue });
 
-			MainActivity.myListView.setAdapter(listAdapter);
+			//MainActivity.myListView.setAdapter(listAdapter); 
 
 		} catch (JSONException e) {
 			Log.e("displayDataFromFile ERROR", e.getMessage().toString());

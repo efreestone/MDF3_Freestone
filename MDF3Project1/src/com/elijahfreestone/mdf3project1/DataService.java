@@ -1,3 +1,13 @@
+/*
+ * @author	Elijah Freestone 
+ *
+ * Project	MDF3Project1
+ * 
+ * Package	com.elijahfreestone.mdf3project1
+ * 
+ * Date		Jul 10, 2014
+ */
+
 package com.elijahfreestone.mdf3project1;
 
 import java.io.BufferedInputStream;

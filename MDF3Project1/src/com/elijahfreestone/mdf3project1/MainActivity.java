@@ -18,11 +18,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,28 +46,43 @@ public class MainActivity extends Activity {
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
 	
-	static TextView testTextView;
+	static TextView usdTV, eurTV, gbpTV, inrTV, cadTV, audTV, mxnTV, cnyTV, myrTV, aedTV;
 	
-
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.setRequestedOrientation(0); 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
+        setContentView(R.layout.activity_main); 
         
         myContext = this; 
-        myListView = (ListView) this.findViewById(R.id.listView);  
+        //myListView = (ListView) this.findViewById(R.id.listView);  
         
         //Grab instance of DataManager
         myDataManager = DataManager.getInstance();
         
-        testTextView = (TextView) this.findViewById(R.id.test_textview);
+        usdTV = (TextView) this.findViewById(R.id.usdTV);
+        eurTV = (TextView) this.findViewById(R.id.eurTV);
+        gbpTV = (TextView) this.findViewById(R.id.gbpTV);
+        inrTV = (TextView) this.findViewById(R.id.inrTV);
+        cadTV = (TextView) this.findViewById(R.id.cadTV);
+        audTV = (TextView) this.findViewById(R.id.audTV);
+        mxnTV = (TextView) this.findViewById(R.id.mxnTV);
+        cnyTV = (TextView) this.findViewById(R.id.cnyTV);
+        myrTV = (TextView) this.findViewById(R.id.myrTV);
+        aedTV = (TextView) this.findViewById(R.id.aedTV);
+        
+        Button refreshButton = (Button) this.findViewById(R.id.refreshButton);
 		
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);
-		Boolean fileExists = file.exists();
+		final Boolean fileExists = file.exists();
 		if (fileExists) {
 			// Display the data to the listview automatically if file exists
 			JSONData.displayDataFromFile(); 
@@ -72,17 +93,28 @@ public class MainActivity extends Activity {
 			if (NetworkConnection.connectionStatus(myContext)) {
 				// Show No File alert
 				noFileAlert();
-				Log.i("File", "File DOES NOT exist");
 				// Call retrieveData to start the Service and get JSON data from
 				// the API
 				retrieveData(); 
 			} else {
 				// Show No Connection alert
 				noConnectionAlert();
+				//Disable refresh button
+				refreshButton.setEnabled(false);
 			} 
 
 			Log.i("File", "File DOESN'T exist!!");
 		} 
+		
+		//Set refreshButton onClick to display. Button disabled if no network
+		refreshButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				JSONData.displayDataFromFile();
+				
+			}
+		});
     }
     
 	/*
@@ -95,7 +127,7 @@ public class MainActivity extends Activity {
 
 		public MyServiceHandler(MainActivity activity) {
 			myActivity = new WeakReference<MainActivity>(activity);
-		}
+		} 
 
 		@Override
 		public void handleMessage(Message message) {
