@@ -43,10 +43,6 @@ public class MainActivity extends Activity {
 		}
     }
     
-	/**
-	 * No connection alert creates and displays an alert dialog if no Network
-	 * Connection is available.
-	 */
 	public static void noConnectionAlert() {
 		// Create alert dialog for no connection
 		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.myContext).create();
