@@ -13,12 +13,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class MainActivity.
  */
 public class MainActivity extends Activity {
+	String amountEnteredString;
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -27,12 +32,24 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        final EditText amountEditText = (EditText) findViewById(R.id.amountEntered);
+        
+        Button newConvertButton = (Button) findViewById(R.id.convertButton);
+        newConvertButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				amountEnteredString = amountEditText.getText().toString();
+				if (amountEnteredString == null || amountEnteredString.equalsIgnoreCase("0")) {
+					System.out.println("Nothing or zero entered");
+				} else if (amountEnteredString.length() >=1) {
+					System.out.println("button clicked and " + amountEnteredString + " entered");
+				}
 
-//        if (savedInstanceState == null) {
-//            getFragmentManager().beginTransaction()
-//                    .add(R.id.container, new PlaceholderFragment())
-//                    .commit();
-//        }
+			}
+		});
+
     }
 
 
@@ -61,21 +78,4 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-//    public static class PlaceholderFragment extends Fragment {
-//
-//        public PlaceholderFragment() {
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                Bundle savedInstanceState) {
-//            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//            return rootView;
-//        }
-//    }
-
 }

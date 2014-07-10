@@ -4,5 +4,8 @@
     <string name="app_name">AppLauncher</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="titleString">Enter amount to be converted (USD)</string>
+    <string name="buttonString">Convert from USD</string>
 
 </resources>
