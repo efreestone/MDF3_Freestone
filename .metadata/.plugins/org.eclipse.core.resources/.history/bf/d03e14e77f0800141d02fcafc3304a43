@@ -20,9 +20,8 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:clickable="true"
-        android:background="@drawable/button_background"
-        android:text="@string/refreshButton"
-        android:width="150dp" />
+        android:text="Im a button"
+        android:width="250dp" />
     
     <ListView
         android:id="@+id/listView"

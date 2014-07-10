@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         myContext = this; 
-        myListView = (ListView) this.findViewById(R.id.listView);  
+        myListView = (ListView) this.findViewById(R.id.listView);
         
         //Grab instance of DataManager
         myDataManager = DataManager.getInstance();

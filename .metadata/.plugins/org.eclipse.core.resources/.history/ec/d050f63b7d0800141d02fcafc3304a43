@@ -37,8 +37,6 @@ public class JSONData {
 
 		double usdValue, eurValue, gbpValue, inrValue, cadValue, audValue, mxnValue, cnyValue, myrValue, aedValue;
 		String usdString, eurString, gbpString, inrString, cadString, audString, mxnString, cnyString, myrString, aedString;
-		String usdCode = "USD", eurCode = "EUR", gbpCode = "GBP", inrCode = "INR", cadCode = "CAD", 
-				audCode = "AUD", mxnCode = "MXN", cnyCode = "CNY", myrCode = "MYR", aedCode = "AED";
 
 		Log.i("File", "Display Data Called");
 
@@ -53,6 +51,8 @@ public class JSONData {
 		try {
 			jsonObject = new JSONObject(JSONString);
 			JSONObject jsonRatesObject = jsonObject.getJSONObject("rates");
+			String newJSONString = jsonObject.toString();
+			Log.i("JSON File", "Rates: " + newJSONString); 
 			
 			//Grab values for each Currency
 			usdValue = jsonRatesObject.optDouble("USD"); 
@@ -66,19 +66,8 @@ public class JSONData {
 			myrValue = jsonRatesObject.optDouble("MYR");
 			aedValue = jsonRatesObject.optDouble("AED");
 			
-			//Create strings with values and Currency Code
-			usdString = usdCode + " = " + usdValue;
-			eurString = eurCode + " = " + eurValue;
-			gbpString = gbpCode + " = " + gbpValue;
-			inrString = inrCode + " = " + inrValue;
-			cadString = cadCode + " = " + cadValue;
-			audString = audCode + " = " + audValue;
-			mxnString = mxnCode + " = " + mxnValue;
-			cnyString = cnyCode + " = " + cnyValue;
-			myrString = myrCode + " = " + myrValue;
-			aedString = aedCode + " = " + aedValue;
-			
-			Log.i("JSON File", gbpString);
+			gbpString = "GBP = " + gbpValue;
+			Log.i("JSON File", "GBP = " + gbpValue);
 			
 			MainActivity.testTextView.setText(gbpString);
 

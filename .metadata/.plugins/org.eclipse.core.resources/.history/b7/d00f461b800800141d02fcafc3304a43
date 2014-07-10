@@ -20,7 +20,6 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:clickable="true"
-        android:background="@drawable/button_background"
         android:text="@string/refreshButton"
         android:width="150dp" />
     
