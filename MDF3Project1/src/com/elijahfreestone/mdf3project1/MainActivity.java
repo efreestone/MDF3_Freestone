@@ -31,12 +31,12 @@ import android.widget.ListView;
  */
 public class MainActivity extends Activity {
 	static Context myContext;
-	static ListView myListView;
 	static String TAG = "MainActivity";
 	static String responseString = null;
-	static String myFileName = "string_from_url.txt";
+	static ListView myListView;
 	final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
 	static DataManager myDataManager;
+	static String myFileName = "string_from_url.txt";
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -47,20 +47,17 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         myContext = this; 
+        myListView = (ListView) this.findViewById(R.id.listView);
         
-//		if (NetworkConnection.connectionStatus(myContext)) {
-//			Log.i(TAG, "Network Connection Exists");
-//		} else {
-//			// Show No Connection alert
-//			noConnectionAlert();
-//		}
+        //Grab instance of DataManager
+        myDataManager = DataManager.getInstance();
 		
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);
 		Boolean fileExists = file.exists();
 		if (fileExists) {
 			// Display the data to the listview automatically if file exists
-			JSONData.displayDataFromFile();
+			JSONData.displayDataFromFile(); 
 
 			Log.i("File", "File exists");
 		} else {
@@ -70,11 +67,11 @@ public class MainActivity extends Activity {
 				Log.i("File", "File DOES NOT exist");
 				// Call retrieveData to start the Service and get JSON data from
 				// the API
-				retrieveData();
+				retrieveData(); 
 			} else {
 				// Show No Connection alert
 				noConnectionAlert();
-			}
+			} 
 
 			Log.i("File", "File DOESN'T exist!!");
 		} 
@@ -85,18 +82,13 @@ public class MainActivity extends Activity {
 	 * the MainActivty. This is done to avoid the memory leak
 	 */
 	private static class MyServiceHandler extends Handler {
+
 		private final WeakReference<MainActivity> myActivity;
 
-		// Instantiate the handler
 		public MyServiceHandler(MainActivity activity) {
 			myActivity = new WeakReference<MainActivity>(activity);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see android.os.Handler#handleMessage(android.os.Message)
-		 */
 		@Override
 		public void handleMessage(Message message) {
 
@@ -110,13 +102,14 @@ public class MainActivity extends Activity {
 					} catch (Exception e) {
 						Log.e("handleMessage", e.getMessage().toString());
 					}
-					//Write the file to the system
-					myDataManager.writeStringToFile(myContext, myFileName, DataService.responseString);
+					// Write the file to the system
+					myDataManager.writeStringToFile(myContext, myFileName,
+							DataService.responseString);
+
 				} else {
 					Log.i(TAG, "Data NOT created!!");
 				}
 			}
-			
 
 		} // HandleMessage Close
 	} // MyHandler Close
@@ -136,6 +129,7 @@ public class MainActivity extends Activity {
 
 		// Start the service
 		startService(startDataIntent);
+
 	} // retrieveData Close
     
 	/*

@@ -19,7 +19,6 @@ public class JSONData {
 	static Context myContext;
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
-	static String userRatingFile = "user_rating.txt";
 	static String filePathDir = "data/data/com.elijahfreestone.mdf3project1/files/string_from_url.txt";
 
 	static String JSONString;

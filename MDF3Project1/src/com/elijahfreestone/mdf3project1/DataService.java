@@ -37,6 +37,7 @@ public class DataService extends IntentService {
 	 */
 	public DataService() {
 		super("DataService");
+		Log.i(TAG, "DataService instantiated");
 		// TODO Auto-generated constructor stub
 	} 
 

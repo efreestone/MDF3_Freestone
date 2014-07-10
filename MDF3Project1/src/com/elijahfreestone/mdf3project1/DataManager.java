@@ -54,13 +54,13 @@ public class DataManager {
 						Context.MODE_PRIVATE);
 				fileOutputStream.write(content.getBytes());
 				Log.i("writeStringToFile", "string_from_url Write Successful!");
-			} else if (fileName == "user_rating.txt") {
-				fileOutputStream = context.openFileOutput(fileName,
-						Context.MODE_APPEND);
-				// fileOutputStream.
-				fileOutputStream.write(content.getBytes());
-				Log.i("writeStringToFile", "user_rating Write Successful!");
-			}
+			} //else if (fileName == "user_rating.txt") {
+//				fileOutputStream = context.openFileOutput(fileName,
+//						Context.MODE_APPEND);
+//				// fileOutputStream.
+//				fileOutputStream.write(content.getBytes());
+//				Log.i("writeStringToFile", "user_rating Write Successful!");
+//			}
 
 			// fileName = MainActivity.myFileName;
 		} catch (FileNotFoundException e) {
