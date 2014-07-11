@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
         //myListView = (ListView) this.findViewById(R.id.listView);  
         
         myLauncherIntent = getIntent();
-        numberEnteredString = myLauncherIntent.getStringExtra("amountEnteredString");
+        numberEnteredString = myLauncherIntent.getStringExtra(Intent.EXTRA_TEXT);
         //intentType = myLauncherIntent.getType();
         
         Log.i(TAG, "Number entered from intent = " + numberEnteredString);

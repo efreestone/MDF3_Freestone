@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
 		} // HandleMessage Close
 	} // MyHandler Close 
     
-    public void startLaunchIntent() { 
+    public void startLaunchIntent() {
     	Log.i("Launch Intent", "Launch Intent started");
     	
     	// Create Messenger class for ref to handler
