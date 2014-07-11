@@ -32,7 +32,8 @@ public class JSONData {
 
 	static String JSONString;
 	static ArrayList<HashMap<String, String>> myList;
-	public static String userRatingString;
+	public static String numberEnteredString;
+	static double numberEntered;
 
 	/*
 	 * Display data from file pulls string from locally stored file and creates
@@ -58,6 +59,9 @@ public class JSONData {
 		// Create ArrayList with hashmap
 		myList = new ArrayList<HashMap<String, String>>();
 		JSONObject jsonObject = null;
+		
+		numberEnteredString = MainActivity.numberEnteredString;
+		numberEntered = Double.parseDouble(numberEnteredString);
 
 		try {
 			jsonObject = new JSONObject(JSONString);

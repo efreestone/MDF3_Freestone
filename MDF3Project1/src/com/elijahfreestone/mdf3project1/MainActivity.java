@@ -45,13 +45,16 @@ public class MainActivity extends Activity {
 	final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
+	Intent myLauncherIntent;
+	static String numberEnteredString;
+	String intentType;
 	
 	static TextView usdTV, eurTV, gbpTV, inrTV, cadTV, audTV, mxnTV, cnyTV, myrTV, aedTV;
 	
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */ 
-    @Override
+    @Override 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
@@ -63,6 +66,18 @@ public class MainActivity extends Activity {
         
         myContext = this; 
         //myListView = (ListView) this.findViewById(R.id.listView);  
+        
+        myLauncherIntent = getIntent();
+        numberEnteredString = myLauncherIntent.getStringExtra(Intent.EXTRA_TEXT);
+        //intentType = myLauncherIntent.getType();
+        
+        Log.i(TAG, "Number entered from intent = " + numberEnteredString);
+        
+        if (numberEnteredString == null) {
+			numberEnteredString = "1";
+		}
+        
+        Log.i(TAG, "Number entered = " + numberEnteredString);
         
         //Grab instance of DataManager
         myDataManager = DataManager.getInstance();
