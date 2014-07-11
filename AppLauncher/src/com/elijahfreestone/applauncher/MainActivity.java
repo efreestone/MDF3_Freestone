@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 	static String TAG = "Launch Activity";
 	//final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
 	static Context myContext;  
-
+ 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -40,7 +40,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
         
     	myContext = this; 
         
@@ -59,7 +58,7 @@ public class MainActivity extends Activity {
 					System.out.println("button clicked and " + amountEnteredString + " entered");
 					startLaunchIntent();
 				}
-				
+			 	
 			}
 		});
     } // onCreate close  

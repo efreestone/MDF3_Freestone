@@ -188,7 +188,7 @@ public class MainActivity extends Activity {
 	/*
 	 * noConnectionAlert creates and displays an alert dialog if no Network
 	 * Connection is available.
-	 */
+	 */   
 	public static void noConnectionAlert() {
 		// Create alert dialog for no connection
 		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.myContext).create();
@@ -198,7 +198,7 @@ public class MainActivity extends Activity {
 		alertDialog.setMessage(myContext.getString(R.string.noConnectionAlert));
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
 		alertDialog.show();
-	}
+	}   
 	
 	/*
 	 * noFileAlert provides an alert dialog when a file doesn't exist on the
