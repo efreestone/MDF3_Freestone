@@ -10,6 +10,9 @@
 
 package com.elijahfreestone.mdf3project1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +30,7 @@ public class JSONData {
 	static String filePathDir = "data/data/com.elijahfreestone.mdf3project1/files/string_from_url.txt";
 
 	static String JSONString;
+	static ArrayList<HashMap<String, String>> myList;
 	public static String numberEnteredString;
 	static double numberEntered;
 

@@ -10,6 +10,9 @@
 
 package com.elijahfreestone.mdf3project1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +30,7 @@ public class JSONData {
 	static String filePathDir = "data/data/com.elijahfreestone.mdf3project1/files/string_from_url.txt";
 
 	static String JSONString;
+	static ArrayList<HashMap<String, String>> myList;
 	public static String numberEnteredString;
 	static double numberEntered;
 
@@ -51,22 +55,23 @@ public class JSONData {
 
 		Log.i("JSONString", JSONString);
 
+		// Create ArrayList with hashmap
+		myList = new ArrayList<HashMap<String, String>>();
 		JSONObject jsonObject = null;
 		
-		//Grab number entered from main activity
 		numberEnteredString = MainActivity.numberEnteredString;
 		if (numberEnteredString != null) {
 			numberEntered = Double.parseDouble(numberEnteredString);
 		} else {
 			numberEntered = 0;
 		}
+		
 
 		try {
 			jsonObject = new JSONObject(JSONString);
 			JSONObject jsonRatesObject = jsonObject.getJSONObject("rates");
 			
-			//Grab values for each Currency and multiply by amount entered in launcher.
-			//Amount entered defaults to 1 if null
+			//Grab values for each Currency
 			usdValue = jsonRatesObject.optDouble("USD") * numberEntered; 
 			eurValue = jsonRatesObject.optDouble("EUR") * numberEntered; 
 			gbpValue = jsonRatesObject.optDouble("GBP") * numberEntered;  

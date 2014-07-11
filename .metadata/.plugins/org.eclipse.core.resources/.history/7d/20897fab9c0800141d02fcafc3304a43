@@ -10,6 +10,9 @@
 
 package com.elijahfreestone.mdf3project1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
