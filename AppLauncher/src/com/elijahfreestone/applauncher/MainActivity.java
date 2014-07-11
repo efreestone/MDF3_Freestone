@@ -7,31 +7,42 @@
  * 
  * Date		Jul 9, 2014
  */
+
 package com.elijahfreestone.applauncher;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
 // TODO: Auto-generated Javadoc
-/**
- * The Class MainActivity.
- */
+/** 
+ * The Class MainActivity the UI/all functionality of the App Launcher. 
+ * The amount entered is passed to the Main App via an Implicit Intent.
+ */ 
 public class MainActivity extends Activity {
 	String amountEnteredString;
-
+	static String responseString = null;
+	static String TAG = "Launch Activity";
+	//final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
+	static Context myContext;  
+ 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
-    @Override
+    @Override 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+    	myContext = this; 
         
         final EditText amountEditText = (EditText) findViewById(R.id.amountEntered);
         
@@ -41,41 +52,46 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				amountEnteredString = amountEditText.getText().toString();
-				if (amountEnteredString == null || amountEnteredString.equalsIgnoreCase("0")) {
+				if (amountEnteredString.equalsIgnoreCase("") || amountEnteredString.equalsIgnoreCase("0")) {
 					System.out.println("Nothing or zero entered");
+					noValueAlert();
 				} else if (amountEnteredString.length() >=1) {
 					System.out.println("button clicked and " + amountEnteredString + " entered");
-				}
-
+					startLaunchIntent();
+				} 
+			 	
 			}
 		});
-
-    }
-
-
-    /* (non-Javadoc)
-     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+    } // onCreate close  
+    
+    /**
+     * Start launch intent passes the entered value which is used to calculate currency.
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+    public void startLaunchIntent() { 
+    	Log.i("Launch Intent", "Launch Intent started");
+ 
+    	// Create Intent to start activity
+    	Intent startLaunchIntent = new Intent();
+    	startLaunchIntent.setAction(Intent.ACTION_SEND);
+    	startLaunchIntent.setType("text/plan");
+    	startLaunchIntent.putExtra("amountEnteredString", amountEnteredString);
 
-    /* (non-Javadoc)
-     * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    	// Start the activity
+    	startActivity(startLaunchIntent); 
     }
+    
+    /*
+	 * noConnectionAlert creates and displays an alert dialog if no Network
+	 * Connection is available.
+	 */
+	public static void noValueAlert() {
+		// Create alert dialog for no connection
+		AlertDialog alertDialog = new AlertDialog.Builder(myContext).create();
+		alertDialog.setTitle(R.string.noValueTitle);
+		// Set alert message. setMessage only has a charSequence
+		// version so getString must be used.
+		alertDialog.setMessage(myContext.getString(R.string.noValueAlert));
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
+		alertDialog.show();
+	}
 }
