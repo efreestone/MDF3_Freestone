@@ -11,7 +11,9 @@
 package com.elijahfreestone.applauncher;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 // TODO: Auto-generated Javadoc
-/**
+/** 
  * The Class MainActivity. 
  */ 
 public class MainActivity extends Activity {
@@ -29,7 +31,7 @@ public class MainActivity extends Activity {
 	static String responseString = null;
 	static String TAG = "Launch Activity";
 	//final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
-	static Context myContext;
+	static Context myContext;  
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -38,6 +40,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         
     	myContext = this; 
         
@@ -49,8 +52,9 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				amountEnteredString = amountEditText.getText().toString();
-				if (amountEnteredString == null || amountEnteredString.equalsIgnoreCase("0")) {
+				if (amountEnteredString.equalsIgnoreCase("") || amountEnteredString.equalsIgnoreCase("0")) {
 					System.out.println("Nothing or zero entered");
+					noValueAlert();
 				} else if (amountEnteredString.length() >=1) {
 					System.out.println("button clicked and " + amountEnteredString + " entered");
 					startLaunchIntent();
@@ -75,5 +79,20 @@ public class MainActivity extends Activity {
     	// Start the activity
     	startActivity(startLaunchIntent); 
     }
+    
+    /*
+	 * noConnectionAlert creates and displays an alert dialog if no Network
+	 * Connection is available.
+	 */
+	public static void noValueAlert() {
+		// Create alert dialog for no connection
+		AlertDialog alertDialog = new AlertDialog.Builder(myContext).create();
+		alertDialog.setTitle(R.string.noValueTitle);
+		// Set alert message. setMessage only has a charSequence
+		// version so getString must be used.
+		alertDialog.setMessage(myContext.getString(R.string.noValueAlert));
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
+		alertDialog.show();
+	}
     
 }
