@@ -33,7 +33,7 @@ import android.widget.TextView;
  
 // TODO: Auto-generated Javadoc 
 /**
- * The Class MainActivity controls the main UI, including click events and intents.
+ * The Class MainActivity.
  */  
 public class MainActivity extends Activity {
 	static Context myContext;
@@ -62,11 +62,16 @@ public class MainActivity extends Activity {
         
         setContentView(R.layout.activity_main);
         
-        myContext = this;  
+//        ImageView logoImageView = (ImageView) findViewById(R.id.logoImageView);
+//        Resources resources = getResources();
+//        logoImageView.setImageDrawable(resources.getDrawable(R.drawable.logo_image));
         
-        //Grab intent and extra (entered number)
+        myContext = this; 
+        //myListView = (ListView) this.findViewById(R.id.listView);  
+        
         myLauncherIntent = getIntent();
         numberEnteredString = myLauncherIntent.getStringExtra("amountEnteredString");
+        //intentType = myLauncherIntent.getType();
         
         Log.i(TAG, "Number entered from intent = " + numberEnteredString);
         
@@ -217,3 +222,4 @@ public class MainActivity extends Activity {
 		alertDialog.show();
 	}
 }
+

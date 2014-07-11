@@ -24,8 +24,7 @@ import android.widget.EditText;
 
 // TODO: Auto-generated Javadoc
 /** 
- * The Class MainActivity the UI/all functionality of the App Launcher. 
- * The amount entered is passed to the Main App via an Implicit Intent.
+ * The Class MainActivity. 
  */ 
 public class MainActivity extends Activity {
 	String amountEnteredString;
@@ -94,4 +93,5 @@ public class MainActivity extends Activity {
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
 		alertDialog.show();
 	}
+    
 }

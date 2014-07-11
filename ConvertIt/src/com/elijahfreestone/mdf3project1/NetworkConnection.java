@@ -46,5 +46,4 @@ public class NetworkConnection {
 		}
 		return connectionBool;
 	} // connectionStatus Close
-
 }

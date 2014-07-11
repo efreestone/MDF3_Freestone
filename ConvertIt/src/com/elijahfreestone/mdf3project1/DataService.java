@@ -138,5 +138,4 @@ public class DataService extends IntentService {
 		// Return response string
 		return response;
 	} // getResponse Close
-
 }
