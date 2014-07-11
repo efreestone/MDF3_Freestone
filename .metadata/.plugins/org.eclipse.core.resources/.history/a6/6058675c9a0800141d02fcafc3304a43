@@ -85,7 +85,7 @@ public class JSONData {
 			aedValue = jsonRatesObject.optDouble("AED") * numberEntered;
 			
 			//Create strings with values and Currency Code
-			usdString = usdCode + " (Amount Entered) = " + usdValue;
+			usdString = usdCode + "(Amount Entered) = " + usdValue;
 			eurString = eurCode + " = " + eurValue;
 			gbpString = gbpCode + " = " + gbpValue;
 			inrString = inrCode + " = " + inrValue;

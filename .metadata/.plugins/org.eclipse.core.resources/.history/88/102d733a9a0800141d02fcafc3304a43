@@ -61,12 +61,7 @@ public class JSONData {
 		JSONObject jsonObject = null;
 		
 		numberEnteredString = MainActivity.numberEnteredString;
-		if (numberEnteredString != null) {
-			numberEntered = Double.parseDouble(numberEnteredString);
-		} else {
-			numberEntered = 0;
-		}
-		
+		numberEntered = Double.parseDouble(numberEnteredString);
 
 		try {
 			jsonObject = new JSONObject(JSONString);
@@ -85,7 +80,7 @@ public class JSONData {
 			aedValue = jsonRatesObject.optDouble("AED") * numberEntered;
 			
 			//Create strings with values and Currency Code
-			usdString = usdCode + " (Amount Entered) = " + usdValue;
+			usdString = usdCode + " = " + usdValue;
 			eurString = eurCode + " = " + eurValue;
 			gbpString = gbpCode + " = " + gbpValue;
 			inrString = inrCode + " = " + inrValue;

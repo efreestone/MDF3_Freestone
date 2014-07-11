@@ -12,7 +12,5 @@
     
     <string name="noFileTitle">File does not exist</string>
     <string name="noFileAlert">The file does not exist on your device so it was requested from the API. Select Refresh to update the ListView</string>
-    
-    <string name="convertedLabelString">Converted Currency</string>
 
 </resources>

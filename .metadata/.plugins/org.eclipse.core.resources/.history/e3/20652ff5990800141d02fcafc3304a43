@@ -61,31 +61,26 @@ public class JSONData {
 		JSONObject jsonObject = null;
 		
 		numberEnteredString = MainActivity.numberEnteredString;
-		if (numberEnteredString != null) {
-			numberEntered = Double.parseDouble(numberEnteredString);
-		} else {
-			numberEntered = 0;
-		}
-		
+		numberEntered = Double.parseDouble(numberEnteredString);
 
 		try {
 			jsonObject = new JSONObject(JSONString);
 			JSONObject jsonRatesObject = jsonObject.getJSONObject("rates");
 			
 			//Grab values for each Currency
-			usdValue = jsonRatesObject.optDouble("USD") * numberEntered; 
-			eurValue = jsonRatesObject.optDouble("EUR") * numberEntered; 
-			gbpValue = jsonRatesObject.optDouble("GBP") * numberEntered;  
-			inrValue = jsonRatesObject.optDouble("INR") * numberEntered;
-			cadValue = jsonRatesObject.optDouble("CAD") * numberEntered;
-			audValue = jsonRatesObject.optDouble("AUD") * numberEntered;
-			mxnValue = jsonRatesObject.optDouble("MXN") * numberEntered;
-			cnyValue = jsonRatesObject.optDouble("CNY") * numberEntered;
-			myrValue = jsonRatesObject.optDouble("MYR") * numberEntered;
-			aedValue = jsonRatesObject.optDouble("AED") * numberEntered;
+			usdValue = jsonRatesObject.optDouble("USD"); 
+			eurValue = jsonRatesObject.optDouble("EUR"); 
+			gbpValue = jsonRatesObject.optDouble("GBP");  
+			inrValue = jsonRatesObject.optDouble("INR");
+			cadValue = jsonRatesObject.optDouble("CAD");
+			audValue = jsonRatesObject.optDouble("AUD");
+			mxnValue = jsonRatesObject.optDouble("MXN");
+			cnyValue = jsonRatesObject.optDouble("CNY");
+			myrValue = jsonRatesObject.optDouble("MYR");
+			aedValue = jsonRatesObject.optDouble("AED");
 			
 			//Create strings with values and Currency Code
-			usdString = usdCode + " (Amount Entered) = " + usdValue;
+			usdString = usdCode + " = " + usdValue;
 			eurString = eurCode + " = " + eurValue;
 			gbpString = gbpCode + " = " + gbpValue;
 			inrString = inrCode + " = " + inrValue;
