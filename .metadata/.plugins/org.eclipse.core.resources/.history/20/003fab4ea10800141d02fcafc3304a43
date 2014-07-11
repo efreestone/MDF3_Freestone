@@ -80,7 +80,6 @@ public class MainActivity extends Activity {
         //Grab instance of DataManager
         myDataManager = DataManager.getInstance();
         
-        //Grab text views by id to be accessed from JSONData
         usdTV = (TextView) this.findViewById(R.id.usdTV);
         eurTV = (TextView) this.findViewById(R.id.eurTV);
         gbpTV = (TextView) this.findViewById(R.id.gbpTV);
