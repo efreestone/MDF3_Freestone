@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 				} else if (amountEnteredString.length() >=1) {
 					System.out.println("button clicked and " + amountEnteredString + " entered");
 					startLaunchIntent();
-				}
+				} 
 			 	
 			}
 		});

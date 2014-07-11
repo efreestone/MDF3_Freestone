@@ -14,7 +14,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.view.WindowManager"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
-<fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.R.id"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.JSONData"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.widget.SimpleAdapter"/>
@@ -30,4 +29,10 @@
 <fullyQualifiedTypeName name="android.os.Message"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="android.media.Image"/>
+<fullyQualifiedTypeName name="android.graphics.drawable.Drawable"/>
+<fullyQualifiedTypeName name="android.content.res.Resources"/>
+<fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.R.id"/>
+<fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.R.drawable"/>
 </qualifiedTypeNameHistroy>

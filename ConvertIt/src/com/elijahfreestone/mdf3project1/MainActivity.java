@@ -29,12 +29,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView; 
+import android.widget.TextView;
  
-// TODO: Auto-generated Javadoc
+// TODO: Auto-generated Javadoc 
 /**
  * The Class MainActivity.
- */
+ */  
 public class MainActivity extends Activity {
 	static Context myContext;
 	static String TAG = "MainActivity";
@@ -45,22 +45,26 @@ public class MainActivity extends Activity {
 	static String myFileName = "string_from_url.txt";
 	Intent myLauncherIntent;
 	static String numberEnteredString;
-	String intentType;
+	String intentType;   
 	
 	static TextView usdTV, eurTV, gbpTV, inrTV, cadTV, audTV, mxnTV, cnyTV, myrTV, aedTV;
 	
     /* (non-Javadoc)   
      * @see android.app.Activity#onCreate(android.os.Bundle)
-     */ 
-    @Override 
+     */  
+    @Override  
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); 
+        super.onCreate(savedInstanceState);  
         
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //this.setRequestedOrientation(0); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
-        setContentView(R.layout.activity_main); 
+        setContentView(R.layout.activity_main);
+        
+//        ImageView logoImageView = (ImageView) findViewById(R.id.logoImageView);
+//        Resources resources = getResources();
+//        logoImageView.setImageDrawable(resources.getDrawable(R.drawable.logo_image));
         
         myContext = this; 
         //myListView = (ListView) this.findViewById(R.id.listView);  
