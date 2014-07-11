@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_margin="10dp"
-        android:textSize="21sp"
         android:gravity="center" />
     
     <TextView
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center" 
         android:textStyle="bold"
-        android:textSize="21sp"
+        android:textSize="20dp"
         android:layout_marginBottom="5dp"
         android:text="@string/convertedLabelString"/>
     
@@ -29,63 +28,54 @@
         android:id="@+id/eurTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/gbpTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/inrTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/cadTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/audTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/mxnTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/cnyTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/myrTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <TextView
         android:id="@+id/aedTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:gravity="center" />
     
     <Button

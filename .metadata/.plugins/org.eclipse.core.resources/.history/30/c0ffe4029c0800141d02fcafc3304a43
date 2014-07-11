@@ -22,7 +22,7 @@ import android.widget.EditText;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MainActivity. 
+ * The Class MainActivity.
  */ 
 public class MainActivity extends Activity {
 	String amountEnteredString;
