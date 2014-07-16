@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onResume() {
 		super.onResume();
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
-	} //onResume close
+	}
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onPause()
@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onPause() {
 		super.onPause();
 		mySensorManager.unregisterListener(this);
-	} //onPause close
+	}
 
 	/* (non-Javadoc)
 	 * @see android.hardware.SensorEventListener#onAccuracyChanged(android.hardware.Sensor, int)
@@ -79,7 +79,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
 		
-	} //onAccuracyChanged close
+	}
 
 	/* (non-Javadoc)
 	 * @see android.hardware.SensorEventListener#onSensorChanged(android.hardware.SensorEvent)
@@ -136,6 +136,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 //				//sensorInitialized = false;
 //			}
 		}
-	} //onSensorChanged close 
+	}   
 
 }
