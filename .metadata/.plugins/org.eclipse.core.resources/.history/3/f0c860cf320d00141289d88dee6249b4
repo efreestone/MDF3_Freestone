@@ -46,24 +46,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 		
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onResume()
-	 * 
-	 * onResume is used to reset the sensor listener
-	 */
 	public void onResume() {
 		super.onResume();
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
-	}
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onPause()
-	 * 
-	 * onPause is used to unregister the sensor listener to avoid battery drainage
-	 */
-	public void onPause() {
-		super.onPause();
-		mySensorManager.unregisterListener(this);
 	}
 
 	/* (non-Javadoc)

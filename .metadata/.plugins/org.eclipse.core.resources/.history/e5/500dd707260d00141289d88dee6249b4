@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    >
+    android:background="">
 
     <ImageView
         android:id="@+id/newImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:contentDescription="@string/imageDescString"
-        android:src="@drawable/main_background" />
+        android:layout_height="400dp"
+        android:src="@drawable/ic_launcher" />
 
 </LinearLayout>

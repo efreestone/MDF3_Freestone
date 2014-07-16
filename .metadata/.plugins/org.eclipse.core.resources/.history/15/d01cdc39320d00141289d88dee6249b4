@@ -40,44 +40,18 @@ public class MainActivity extends Activity implements SensorEventListener {
 		myContext = this;
 		sensorInitialized = false;
 		//Instantiate sensor and manager
-		mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		mySensorManager = (SensorManager) getSystemService(Context.SEARCH_SERVICE);
 		myAccelSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
 		
 	}
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onResume()
-	 * 
-	 * onResume is used to reset the sensor listener
-	 */
-	public void onResume() {
-		super.onResume();
-		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
-	}
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onPause()
-	 * 
-	 * onPause is used to unregister the sensor listener to avoid battery drainage
-	 */
-	public void onPause() {
-		super.onPause();
-		mySensorManager.unregisterListener(this);
-	}
 
-	/* (non-Javadoc)
-	 * @see android.hardware.SensorEventListener#onAccuracyChanged(android.hardware.Sensor, int)
-	 */
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see android.hardware.SensorEventListener#onSensorChanged(android.hardware.SensorEvent)
-	 */
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		// TODO Auto-generated method stub
