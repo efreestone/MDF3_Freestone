@@ -18,7 +18,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,7 +30,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 	float NOISE = 19.6f;
 	Context myContext;
 	String TAG = "MainActivity";
-	ImageView newImageView;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -45,8 +43,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 		sensorInitialized = false;
 		//Instantiate sensor and manager
 		mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		
-		newImageView = (ImageView) findViewById(R.id.newImageView);
 		
 		if (mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
 			myAccelSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

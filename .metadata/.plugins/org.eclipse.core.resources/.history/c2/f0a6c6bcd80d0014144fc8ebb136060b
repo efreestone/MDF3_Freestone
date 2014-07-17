@@ -12,6 +12,7 @@ package com.elijahfreestone.mdf3project2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,6 +33,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	Context myContext;
 	String TAG = "MainActivity";
 	ImageView newImageView;
+	Bitmap newBitmap;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)

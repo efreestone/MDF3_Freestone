@@ -22,12 +22,10 @@
 <fullyQualifiedTypeName name="android.content.pm.ActivityInfo"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.MainActivity"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
-<fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="android.os.Messenger"/>
 <fullyQualifiedTypeName name="android.os.Handler"/>
 <fullyQualifiedTypeName name="java.lang.ref.WeakReference"/>
 <fullyQualifiedTypeName name="android.os.Message"/>
-<fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.widget.ImageView"/>
 <fullyQualifiedTypeName name="android.media.Image"/>
@@ -35,4 +33,8 @@
 <fullyQualifiedTypeName name="android.content.res.Resources"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.R.id"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project1.R.drawable"/>
+<fullyQualifiedTypeName name="android.hardware.SensorManager"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.hardware.Sensor"/>
 </qualifiedTypeNameHistroy>
