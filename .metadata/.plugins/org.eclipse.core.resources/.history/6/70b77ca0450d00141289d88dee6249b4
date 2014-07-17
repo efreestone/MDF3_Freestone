@@ -112,10 +112,16 @@ public class MainActivity extends Activity implements SensorEventListener {
 			if (yDelta < NOISE) yDelta = 0;
 			if (zDelta < NOISE) zDelta = 0;
 			
+//			lastXAxis = xAxis;
+//			lastYAxis = yAxis;
+//			lastZAxis = zAxis;
+			
 			if (xDelta > yDelta) {
 				Log.i(TAG, "X axis");
 			} else if (yDelta > xDelta) {
 				Log.i(TAG, "Y axis");
+			} else {
+				//Log.i(TAG, "No axis");
 			}
 			
 //			if (xAxis < NOISE) {
