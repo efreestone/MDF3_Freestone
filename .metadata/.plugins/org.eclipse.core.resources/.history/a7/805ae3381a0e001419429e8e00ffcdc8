@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 		previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
 		//launchCamera = new LaunchCamera(this, myCamera);
 	} //onResume close 
-	 
+	
 	/* (non-Javadoc) 
 	 * @see android.app.Activity#onPause()
 	 * 
@@ -269,7 +269,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 				.setContentIntent(pendingIntent)
 				.setSmallIcon(R.drawable.shake_logo)
 				.addAction(R.drawable.shake_logo, "View", pendingIntent)
-				.build();   
+				.build();  
 		
 		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		notificationManager.notify(0, newPicNotification);

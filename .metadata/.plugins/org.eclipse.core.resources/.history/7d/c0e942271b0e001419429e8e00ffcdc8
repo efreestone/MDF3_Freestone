@@ -75,12 +75,6 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 //			//myCamera.setPreviewDisplay(holder);
 //			myCamera.release(); 
 //		}
-		if (myCamera != null) {
-			this.getHolder().removeCallback(this);
-			//myCamera.setPreviewCallback(null);
-			myCamera.release();
-			myCamera = null; 
-	    }
 	}
 	
 
