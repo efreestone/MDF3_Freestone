@@ -17,11 +17,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -36,6 +36,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,7 @@ import android.widget.Toast;
 /**
  * The Class MainActivity.
  */
+@SuppressLint("SimpleDateFormat")
 public class MainActivity extends Activity implements SensorEventListener {
 	boolean sensorInitialized;
 	Sensor myAccelSensor;
@@ -72,8 +74,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 		setContentView(R.layout.activity_main);
 
 		myContext = this;  
-		newImageView = (ImageView) findViewById(R.id.newImageView);
-		//myCamera = null;   
+		newImageView = (ImageView) findViewById(R.id.newImageView); 
 		
 		sensorInitialized = false;  
 		//Instantiate sensor and manager
@@ -100,6 +101,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 		super.onResume();
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
 		previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+		newImageView.setVisibility(View.VISIBLE);
+		cameraButton.setVisibility(View.INVISIBLE);
 		//launchCamera = new LaunchCamera(this, myCamera);
 	} //onResume close 
 	 
@@ -175,6 +178,11 @@ public class MainActivity extends Activity implements SensorEventListener {
 		}
 	} //onSensorChanged close 
 	
+	/*
+	 * Check device for camera.
+	 *
+	 * @return the camera
+	 */
 	public static Camera checkDeviceForCamera() {
 		myCamera = null;
 		try {
@@ -183,13 +191,19 @@ public class MainActivity extends Activity implements SensorEventListener {
 			Log.e(TAG, "Camera Error" + e.getMessage().toString());
 			e.printStackTrace();
 		}
-		return myCamera;
-	}
+		return myCamera; 
+	} //checkDeviceForCamera close
 	
+	/*
+	 * Take new picture.
+	 *
+	 * @param view the view
+	 */
 	public void takeNewPicture(View view) {
 		myCamera.takePicture(null, null, myPictureCallback);
-	}
+	} //takeNewPicture close
 	
+	/* myPictureCallback ovverides PictureCallback and saves image. */
 	private PictureCallback myPictureCallback = new PictureCallback() {
 
 		@Override
@@ -208,7 +222,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 				if (!newPictureDirectory.exists() && !newPictureDirectory.mkdirs()) {
 					Log.e(TAG, "Error creating directory");
 					return;
-				}
+				}    
 				
 				//Grab date to be used for naming the new image
 				SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("yyyymmddhhmmss");
@@ -217,7 +231,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 				String photoFile = "Picture_" + dateTaken + ".jpg";
 
 			    String filename = newPictureDirectory.getPath() + File.separator + photoFile;
-			    
+			     
 			    Log.i(TAG, "file name" + filename);
 
 			    File pictureFile = new File(filename);  
@@ -249,20 +263,31 @@ public class MainActivity extends Activity implements SensorEventListener {
 				}	
 			} 
 			myCamera.release();  
-		}
-	};
+		} //onPictureTaken close
+	}; //myPictureCallback close
 	
+	/*
+	 * Gets the public directory for the device.
+	 *
+	 * @return the directory
+	 */
 	public File getDirectory() {
 		//File localDirectory = myContext.getDir("dirname", Context.MODE_PRIVATE);
 		File localDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 		Log.i(TAG, "getDirectory called");
 		return new File(localDirectory, "NewImage");
-	} //getDirectory close  
+	} //getDirectory close   
 	
+	/*
+	 * Creates the picture notification.
+	 */
 	public void createPictureNotification() {
 		Intent pictureIntent = new Intent(Intent.ACTION_VIEW, null);
 		pictureIntent.setType("image/*");
 		PendingIntent pendingIntent = PendingIntent.getActivity(myContext, 0, pictureIntent, 0);
+		
+		Vibrator notifyVibrate = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		notifyVibrate.vibrate(500); 
 		
 		Notification newPicNotification = new Notification.Builder(this).setContentTitle("Picture saved!")
 				.setContentText("Your image was saved to your Gallery.")
@@ -273,6 +298,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 		
 		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		notificationManager.notify(0, newPicNotification);
-	}
+	} //createPictureNotification close
 
 }

@@ -55,11 +55,14 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		try {
-			myCamera.setPreviewDisplay(holder);        
+			myCamera.setPreviewDisplay(holder);      
+			Camera.Parameters myParameters = myCamera.getParameters();
+			myParameters.set("orientation", "portrait");
+			myParameters.set("rotation", "90");
 			myCamera.startPreview();
 		} catch (IOException e) { 
 			Log.e(TAG, "Preview Error" + e.getMessage().toString());
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 
 	} 
@@ -69,14 +72,8 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 	 */
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
-//		//holder = null;
-//		 if (myCamera != null) {
-//			//myCamera.stopPreview();
-//			//myCamera.setPreviewDisplay(holder);
-//			myCamera.release(); 
-//		}
 		if (myCamera != null) {
-			this.getHolder().removeCallback(this);
+			this.getHolder().removeCallback(this); 
 			//myCamera.setPreviewCallback(null);
 			myCamera.release();
 			myCamera = null; 
