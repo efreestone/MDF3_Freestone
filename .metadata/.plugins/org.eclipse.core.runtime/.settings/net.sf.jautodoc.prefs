@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+filter_types=false
 header_text=/*\n * @author\t${author} \n *\n * Project\t${project_name}\n * \n * Package\t${package_name}\n * \n * Date\t\t${date}\n */
 properties=author,
 properties.author=Elijah Freestone
