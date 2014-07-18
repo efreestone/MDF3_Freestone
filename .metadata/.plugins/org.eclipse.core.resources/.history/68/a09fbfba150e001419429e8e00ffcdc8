@@ -59,6 +59,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 	boolean hasCamera;
 	FrameLayout previewFrame;
 	NotificationManager myNotificationManager;
+	//Intent pictureIntent;
+	
+	//Button testButton;  
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)

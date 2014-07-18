@@ -13,7 +13,7 @@
         android:src="@drawable/main_background" />
     
     <Button 
-        android:id="@+id/cameraButton"
+        android:id="@+id/testButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="takeNewPicture"
