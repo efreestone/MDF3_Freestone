@@ -238,8 +238,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 							public void onScanCompleted(String path, Uri uri) {
 								Log.i("ExternalStorage", "Scanned " + path + ":");
 				                Log.i("ExternalStorage", "-> uri=" + uri);
-				                
-				                createPictureNotification(); 
 							} 
 						});
 				} catch (FileNotFoundException e) { 
@@ -259,19 +257,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 		return new File(localDirectory, "NewImage");
 	} //getDirectory close  
 	
-	public void createPictureNotification() {
+	public void createPictureNotification(View view) {
 		Intent pictureIntent = new Intent();
 		PendingIntent pendingIntent = PendingIntent.getActivity(myContext, 0, pictureIntent, 0);
-		
-		Notification newPicNotification = new Notification.Builder(this).setContentTitle("Picture saved!")
-				.setContentText("Your image was saved to your Gallery.")
-				.setContentIntent(pendingIntent)
-				.setSmallIcon(R.drawable.shake_logo)
-				.addAction(R.drawable.shake_logo, "View", pendingIntent)
-				.build(); 
-		
-		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		notificationManager.notify(0, newPicNotification);
 	}
 
 }

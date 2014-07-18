@@ -238,8 +238,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 							public void onScanCompleted(String path, Uri uri) {
 								Log.i("ExternalStorage", "Scanned " + path + ":");
 				                Log.i("ExternalStorage", "-> uri=" + uri);
-				                
-				                createPictureNotification(); 
 							} 
 						});
 				} catch (FileNotFoundException e) { 

@@ -8,7 +8,5 @@
     <string name="imageDescString">Image taken with device camera</string>
     
     <string name="shakeInstString">Shake device to save picture</string>
-    
-    <string name="cameraButtonString">Take Picture</string>
 
 </resources>
