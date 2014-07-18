@@ -10,15 +10,32 @@
 
 package com.elijahfreestone.mdf3project2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,10 +45,17 @@ public class MainActivity extends Activity implements SensorEventListener {
 	boolean sensorInitialized;
 	Sensor myAccelSensor;
 	SensorManager mySensorManager;
-	float NOISE = 19.6f;
+	float NOISE = 19.5f;
 	Context myContext;
-	String TAG = "MainActivity";
+	static String TAG = "MainActivity";
 	ImageView newImageView;
+	static Camera myCamera;
+	LaunchCamera launchCamera;
+	static int myCameraID = 0;
+	boolean hasCamera;
+	FrameLayout previewFrame;
+	
+	//Button testButton;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -42,17 +66,18 @@ public class MainActivity extends Activity implements SensorEventListener {
 		setContentView(R.layout.activity_main);
 
 		myContext = this;
-		sensorInitialized = false;
+		newImageView = (ImageView) findViewById(R.id.newImageView);
+		//myCamera = null;   
+		
+		sensorInitialized = false;  
 		//Instantiate sensor and manager
 		mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		
-		newImageView = (ImageView) findViewById(R.id.newImageView);
-		
 		if (mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
 			myAccelSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		}
-		
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
+		
+		previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
 		
 	} //onCreate close
 	
@@ -64,9 +89,11 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onResume() {
 		super.onResume();
 		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
-	} //onResume close
+		previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+		//launchCamera = new LaunchCamera(this, myCamera);
+	} //onResume close 
 	
-	/* (non-Javadoc)
+	/* (non-Javadoc) 
 	 * @see android.app.Activity#onPause()
 	 * 
 	 * onPause is used to unregister the sensor listener to avoid battery drainage
@@ -74,6 +101,15 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onPause() {
 		super.onPause();
 		mySensorManager.unregisterListener(this);
+		
+		//Release Camera
+		if (myCamera != null) {
+			myCamera.release();
+			previewFrame = null;
+		}  
+//		myCamera.release();
+//		previewFrame = null;  
+		
 	} //onPause close
 
 	/* (non-Javadoc)
@@ -83,7 +119,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
 		
-	} //onAccuracyChanged close
+	} //onAccuracyChanged close 
 
 	/* (non-Javadoc)
 	 * @see android.hardware.SensorEventListener#onSensorChanged(android.hardware.SensorEvent)
@@ -92,7 +128,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		float lastXAxis = 0;
 		float lastYAxis = 0;
-		float lastZAxis = 0;
+		float lastZAxis = 0; 
 		
 		float xAxis = event.values[0];
 		float yAxis = event.values[1];
@@ -117,26 +153,100 @@ public class MainActivity extends Activity implements SensorEventListener {
 			if (zDelta < NOISE) zDelta = 0;
 			
 			if (xDelta > yDelta) {
-				Log.i(TAG, "X axis");
+				Log.i(TAG, "X axis"); 
+				//preview.visibility = "visible";
+				newImageView.setVisibility(View.GONE);
+				//previewFrame.setVisibility(View.VISIBLE);
+				myCamera = checkDeviceForCamera();
+				launchCamera = new LaunchCamera(this, myCamera);
+				//previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+				previewFrame.addView(launchCamera);
 			} else if (yDelta > xDelta) {
-				Log.i(TAG, "Y axis");
-			}
-			
-//			if (xAxis < NOISE) {
-//				Log.i(TAG, "x axis");
-//				//sensorInitialized = false;
-//			} 
-//			
-//			if (yAxis < NOISE) {
-//				Log.i(TAG, "y axis");
-//				//sensorInitialized = false;
-//			}
-//			
-//			if (zAxis < NOISE) {
-//				Log.i(TAG, "z axis");
-//				//sensorInitialized = false;
-//			}
+				Log.i(TAG, "Y axis");  
+			}   
 		}
 	} //onSensorChanged close 
+	
+	public static Camera checkDeviceForCamera() {
+		myCamera = null;
+		try {
+			myCamera = Camera.open();
+		} catch (Exception e) {
+			Log.e(TAG, "Camera Error" + e.getMessage().toString());
+			e.printStackTrace();
+		}
+		return myCamera;
+	}
+	
+	public void takeNewPicture(View view) {
+		myCamera.takePicture(null, null, myPictureCallback);
+	}
+	
+	private PictureCallback myPictureCallback = new PictureCallback() {
+
+		@Override
+		public void onPictureTaken(byte[] data, Camera camera) {
+
+			Bitmap newBitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+			if (newBitmap == null) {
+				Toast.makeText(getApplicationContext(), "Picture not taken",
+						Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getApplicationContext(), "Picture taken",
+						Toast.LENGTH_SHORT).show();
+				
+				File newPictureDirectory = getDirectory();
+				//Make sure directory exists or is creatable
+				if (!newPictureDirectory.exists() && !newPictureDirectory.mkdirs()) {
+					Log.e(TAG, "Error creating directory");
+					return;
+				}
+				
+				//Grab date to be used for naming the new image
+				SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("yyyymmddhhmmss");
+				String dateTaken = newSimpleDateFormat.format(new Date());
+				//String pictureFileName = newPictureDirectory.getPath() + File.separator + "pic_" + dateTaken + ".jpg";
+				String photoFile = "Picture_" + dateTaken + ".jpg";
+
+			    String filename = newPictureDirectory.getPath() + File.separator + photoFile;
+			    
+			    Log.i(TAG, "file name" + filename);
+
+			    File pictureFile = new File(filename);  
+				
+				//File newPictureFile = new File(pictureFile);
+				
+				try {
+					FileOutputStream fileOutputStream;
+					fileOutputStream = new FileOutputStream(pictureFile);
+					fileOutputStream.write(data);
+					fileOutputStream.close();
+					Log.i(TAG, "File output stream TRY");
+
+					MediaScannerConnection.scanFile(myContext, new String[] { pictureFile.toString() }, null,
+						new MediaScannerConnection.OnScanCompletedListener() {
+
+							@Override
+							public void onScanCompleted(String path, Uri uri) {
+								Log.i("ExternalStorage", "Scanned " + path + ":");
+				                Log.i("ExternalStorage", "-> uri=" + uri);
+							} 
+						});
+				} catch (FileNotFoundException e) { 
+					Log.e(TAG, "File output stream File not found" + e.getMessage().toString());
+				} catch (IOException e) {
+					Log.e(TAG, "File output stream IO Exception" + e.getMessage().toString());
+				}	
+			}
+			myCamera.release();  
+		}
+	};
+	
+	public File getDirectory() {
+		//File localDirectory = myContext.getDir("dirname", Context.MODE_PRIVATE);
+		File localDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		Log.i(TAG, "getDirectory called");
+		return new File(localDirectory, "NewImage");
+	} //getDirectory close  
 
 }

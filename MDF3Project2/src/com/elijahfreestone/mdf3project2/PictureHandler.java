@@ -14,17 +14,19 @@ import android.os.Environment;
 import android.util.Log;
 
 public class PictureHandler implements PictureCallback {
-	Context myContext;
+	Context context;
 	String TAG = "PictureHandler";
 	
 	//Grab the context
 	public PictureHandler(Context context) {
-		this.myContext = context;
+		this.context = context;
 	}
 
 	@Override
 	public void onPictureTaken(byte[] data, Camera camera) {
 		File newPictureDirectory = getDirectory();
+		
+		camera.startPreview();
 		
 		//Make sure directory exists or is creatable
 		if (!newPictureDirectory.exists() && !newPictureDirectory.mkdirs()) {
@@ -33,15 +35,20 @@ public class PictureHandler implements PictureCallback {
 		}
 		
 		//Grab date to be used for naming the new image
-		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("yymmddhhmmss");
+		SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("yyyymmddhhmmss");
 		String dateTaken = newSimpleDateFormat.format(new Date());
-		String pictureFileName = newPictureDirectory.getPath() + File.separator + "pic_" + dateTaken + ".jpg";
+		//String pictureFileName = newPictureDirectory.getPath() + File.separator + "pic_" + dateTaken + ".jpg";
+		String photoFile = "Picture_" + dateTaken + ".jpg";
+
+	    String filename = newPictureDirectory.getPath() + File.separator + photoFile;
+
+	    File pictureFile = new File(filename); 
 		
-		File newPictureFile = new File(pictureFileName);
+		//File newPictureFile = new File(pictureFile);
 		
-		FileOutputStream fileOutputStream;
 		try {
-			fileOutputStream = new FileOutputStream(newPictureFile);
+			FileOutputStream fileOutputStream;
+			fileOutputStream = new FileOutputStream(pictureFile);
 			fileOutputStream.write(data);
 			fileOutputStream.close();
 			Log.i(TAG, "File output stream TRY");
@@ -49,7 +56,7 @@ public class PictureHandler implements PictureCallback {
 			Log.e(TAG, "File output stream File not found" + e.getMessage().toString());
 		} catch (IOException e) {
 			Log.e(TAG, "File output stream IO Exception" + e.getMessage().toString());
-		}	
+		}	 
 		
 	} //onPictureTaken close
 	
@@ -58,5 +65,5 @@ public class PictureHandler implements PictureCallback {
 		Log.i(TAG, "getDirectory called");
 		return new File(localDirectory, "NewImage");
 	} //getDirectory close
-
+ 
 }

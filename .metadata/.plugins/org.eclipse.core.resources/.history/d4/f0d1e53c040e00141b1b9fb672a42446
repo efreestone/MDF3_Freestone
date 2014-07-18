@@ -1,0 +1,184 @@
+/*
+ * @author	Elijah Freestone 
+ *
+ * Project	MDF3Project2
+ * 
+ * Package	com.elijahfreestone.mdf3project2
+ * 
+ * Date		Jul 12, 2014
+ */
+
+package com.elijahfreestone.mdf3project2;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainActivity.
+ */
+public class MainActivity extends Activity implements SensorEventListener {
+	boolean sensorInitialized;
+	Sensor myAccelSensor;
+	SensorManager mySensorManager;
+	float NOISE = 19.5f;
+	Context myContext;
+	static String TAG = "MainActivity";
+	ImageView newImageView;
+	static Camera myCamera;
+	LaunchCamera launchCamera;
+	static int myCameraID = 0;
+	boolean hasCamera;
+	FrameLayout previewFrame;
+	
+	//Button testButton;
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		myContext = this;
+		newImageView = (ImageView) findViewById(R.id.newImageView);
+		//myCamera = null;   
+		
+		sensorInitialized = false;  
+		//Instantiate sensor and manager
+		mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		if (mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
+			myAccelSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		}
+		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
+		
+	} //onCreate close
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 * 
+	 * onResume is used to reset the sensor listener
+	 */
+	public void onResume() {
+		super.onResume();
+		mySensorManager.registerListener(this, myAccelSensor, SensorManager.SENSOR_DELAY_NORMAL);
+	} //onResume close 
+	
+	/* (non-Javadoc) 
+	 * @see android.app.Activity#onPause()
+	 * 
+	 * onPause is used to unregister the sensor listener to avoid battery drainage
+	 */
+	public void onPause() {
+		super.onPause();
+		mySensorManager.unregisterListener(this);
+		
+		//Release Camera
+		if (myCamera != null) {
+			//myCamera.release();
+		}  
+	} //onPause close
+
+	/* (non-Javadoc)
+	 * @see android.hardware.SensorEventListener#onAccuracyChanged(android.hardware.Sensor, int)
+	 */
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
+	} //onAccuracyChanged close 
+
+	/* (non-Javadoc)
+	 * @see android.hardware.SensorEventListener#onSensorChanged(android.hardware.SensorEvent)
+	 */
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		float lastXAxis = 0;
+		float lastYAxis = 0;
+		float lastZAxis = 0; 
+		
+		float xAxis = event.values[0];
+		float yAxis = event.values[1];
+		float zAxis = event.values[2];
+		
+		//Set or create default values if first time sensor has been activated
+		if (!sensorInitialized) {
+			lastXAxis = xAxis;
+			lastYAxis = yAxis;
+			lastZAxis = zAxis;
+			
+			sensorInitialized = true;
+		} else {
+			//Get delta values for sensor data
+			float xDelta = Math.abs(lastXAxis - xAxis);
+			float yDelta = Math.abs(lastYAxis - yAxis);
+			float zDelta = Math.abs(lastZAxis - zAxis);
+			
+			//Zero out delta values below threshold level
+			if (xDelta < NOISE) xDelta = 0;
+			if (yDelta < NOISE) yDelta = 0;
+			if (zDelta < NOISE) zDelta = 0;
+			
+			if (xDelta > yDelta) {
+				Log.i(TAG, "X axis"); 
+				//preview.visibility = "visible";
+				newImageView.setVisibility(View.GONE);
+				//previewFrame.setVisibility(View.VISIBLE);
+				myCamera = checkDeviceForCamera();
+				launchCamera = new LaunchCamera(this, myCamera);
+				previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+				previewFrame.addView(launchCamera);
+			} else if (yDelta > xDelta) {
+				Log.i(TAG, "Y axis");  
+			}   
+		}
+	} //onSensorChanged close 
+	
+	public static Camera checkDeviceForCamera() {
+		myCamera = null;
+		try {
+			myCamera = Camera.open();
+		} catch (Exception e) {
+			Log.e(TAG, "Camera Error" + e.getMessage().toString());
+			e.printStackTrace();
+		}
+		return myCamera;
+	}
+	
+	public void takeNewPicture(View view) {
+		myCamera.takePicture(null, null, myPictureCallback);
+	}
+	
+	private PictureCallback myPictureCallback = new PictureCallback() { 
+
+	      @Override
+	      public void onPictureTaken(byte[] data, Camera camera) {
+
+	      Bitmap bitmap = BitmapFactory.decodeByteArray(data , 0, data .length);
+	      if(bitmap==null){
+	         Toast.makeText(getApplicationContext(), "not taken", Toast.LENGTH_SHORT).show();
+	      }
+	      else
+	      {
+	         Toast.makeText(getApplicationContext(), "taken", Toast.LENGTH_SHORT).show();    	
+	      }
+	      myCamera.release();
+	   }
+	};   
+
+}
