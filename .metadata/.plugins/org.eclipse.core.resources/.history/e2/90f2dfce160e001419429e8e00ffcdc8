@@ -65,7 +65,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	@Override     
+	@Override   
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -163,11 +163,15 @@ public class MainActivity extends Activity implements SensorEventListener {
 			
 			if (xDelta > yDelta) { 
 				Log.i(TAG, "X axis"); 
+				//preview.visibility = "visible";
 				newImageView.setVisibility(View.GONE);
+				//previewFrame.setVisibility(View.VISIBLE);
 				cameraButton.setVisibility(View.VISIBLE);
+				//cameraButton.setClickable("true");
 				myCamera = checkDeviceForCamera();
 				launchCamera = new LaunchCamera(this, myCamera);
-				previewFrame.addView(launchCamera); 
+				//previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+				previewFrame.addView(launchCamera);
 			} else if (yDelta > xDelta) {
 				Log.i(TAG, "Y axis");  
 			}   

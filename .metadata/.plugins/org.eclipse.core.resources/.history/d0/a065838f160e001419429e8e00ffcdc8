@@ -37,7 +37,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -60,12 +59,11 @@ public class MainActivity extends Activity implements SensorEventListener {
 	boolean hasCamera;
 	FrameLayout previewFrame;
 	NotificationManager myNotificationManager;
-	Button cameraButton;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	@Override     
+	@Override   
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -85,8 +83,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 		previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
 		
 		myNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		
-		cameraButton = (Button) findViewById(R.id.cameraButton);
 		
 	} //onCreate close
 	
@@ -159,15 +155,17 @@ public class MainActivity extends Activity implements SensorEventListener {
 			//Zero out delta values below threshold level
 			if (xDelta < NOISE) xDelta = 0;
 			if (yDelta < NOISE) yDelta = 0;
-			if (zDelta < NOISE) zDelta = 0; 
+			if (zDelta < NOISE) zDelta = 0;
 			
-			if (xDelta > yDelta) { 
+			if (xDelta > yDelta) {
 				Log.i(TAG, "X axis"); 
+				//preview.visibility = "visible";
 				newImageView.setVisibility(View.GONE);
-				cameraButton.setVisibility(View.VISIBLE);
+				//previewFrame.setVisibility(View.VISIBLE);
 				myCamera = checkDeviceForCamera();
 				launchCamera = new LaunchCamera(this, myCamera);
-				previewFrame.addView(launchCamera); 
+				//previewFrame = (FrameLayout) findViewById(R.id.previewFrame);
+				previewFrame.addView(launchCamera);
 			} else if (yDelta > xDelta) {
 				Log.i(TAG, "Y axis");  
 			}   

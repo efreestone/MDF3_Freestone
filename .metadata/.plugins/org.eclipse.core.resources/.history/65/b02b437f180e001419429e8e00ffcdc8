@@ -55,7 +55,7 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		try {
-			myCamera.setPreviewDisplay(holder);      
+			myCamera.setPreviewDisplay(holder);     
 			myCamera.startPreview();
 		} catch (IOException e) { 
 			Log.e(TAG, "Preview Error" + e.getMessage().toString());

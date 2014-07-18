@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="#c6c8ca" >
+    >
     
     <ImageView
         android:id="@+id/newImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:contentDescription="@string/imageDescString"
         android:src="@drawable/main_background" />
     
@@ -18,9 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="takeNewPicture"
-        android:text="@string/cameraButtonString"
-        
-        android:visibility="invisible" />
+        android:text="@string/cameraButtonString" />
     
     <FrameLayout
         android:id="@+id/previewFrame"
