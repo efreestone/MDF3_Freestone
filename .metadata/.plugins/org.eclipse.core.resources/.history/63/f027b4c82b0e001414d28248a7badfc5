@@ -232,6 +232,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 			    File pictureFile = new File(filename);  
 				
+				//File newPictureFile = new File(pictureFile);
+				
 				try {
 					FileOutputStream fileOutputStream;
 					fileOutputStream = new FileOutputStream(pictureFile);

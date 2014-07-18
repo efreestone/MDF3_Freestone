@@ -64,6 +64,7 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 			Log.e(TAG, "Preview Error" + e.getMessage().toString());
 			e.printStackTrace(); 
 		}
+
 	} 
 
 	/* (non-Javadoc)
@@ -73,9 +74,11 @@ public class LaunchCamera extends SurfaceView implements SurfaceHolder.Callback 
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		if (myCamera != null) {
 			this.getHolder().removeCallback(this); 
+			//myCamera.setPreviewCallback(null);
 			myCamera.release();
 			myCamera = null; 
 	    }
 	}
+	
 
 }

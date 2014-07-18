@@ -119,6 +119,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 			myCamera.release();
 			previewFrame = null;
 		}  
+//		myCamera.release();
+//		previewFrame = null;  
+		
 	} //onPause close
 
 	/* (non-Javadoc)
@@ -199,7 +202,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 		myCamera.takePicture(null, null, myPictureCallback);
 	} //takeNewPicture close
 	
-	/* myPictureCallback overrides PictureCallback and saves image. */
+	/* myPictureCallback ovverides PictureCallback and saves image. */
 	private PictureCallback myPictureCallback = new PictureCallback() {
 
 		@Override
@@ -231,6 +234,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 			    Log.i(TAG, "file name" + filename);
 
 			    File pictureFile = new File(filename);  
+				
+				//File newPictureFile = new File(pictureFile);
 				
 				try {
 					FileOutputStream fileOutputStream;
