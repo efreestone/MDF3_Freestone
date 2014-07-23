@@ -227,7 +227,7 @@ public class MainActivity extends Activity implements
 
 			myListView.setAdapter(listAdapter);
 		}
-	} // onRestoreInstanceState Close 
+	} // onRestoreInstanceState Close
 
 	// onActivityResult is called when returning from Details or Device
 	// orientation changes to Landscape on Details.

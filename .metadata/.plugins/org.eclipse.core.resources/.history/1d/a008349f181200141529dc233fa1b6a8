@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.elijahfreestone.mdf3project3.MainActivityFragment"
+        android:name="com.elijahfreestone.java2project3.MainActivityFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
