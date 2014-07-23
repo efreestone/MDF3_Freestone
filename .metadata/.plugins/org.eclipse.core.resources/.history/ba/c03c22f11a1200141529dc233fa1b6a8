@@ -40,23 +40,22 @@ public class DataService extends IntentService {
 	public static final String MESSENGER_KEY = "messenger";
 	public static String responseString;
 
-	//String urlString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=pjf78vgfp2mmcqma8359ycrc&page_limit=10";
 	String urlString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=xxnu68qnz6ap2ygf4qvu659t&page_limit=10";
 
-	/* 
+	/*
 	 * Instantiates a new data service.
 	 */
-	public DataService() { 
+	public DataService() {
 		super("DataService");
 		// TODO Auto-generated constructor stub
-	} 
+	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.IntentService#onHandleIntent(android.content.Intent)
 	 */
-	@Override 
+	@Override
 	protected void onHandleIntent(Intent intent) {
 		// Grab instance of DataManager
 		myDataManager = DataManager.getInstance();
@@ -131,7 +130,7 @@ public class DataService extends IntentService {
 		} catch (IOException e) {
 			// Set response to error
 			response = "URL broken";
-			// e.printStackTrace(); 
+			// e.printStackTrace();
 			// Log error
 			Log.e(TAG, "Something went wrong", e);
 		}

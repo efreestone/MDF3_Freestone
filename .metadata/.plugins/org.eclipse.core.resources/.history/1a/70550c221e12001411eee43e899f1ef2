@@ -227,14 +227,14 @@ public class MainActivity extends Activity implements
 
 			myListView.setAdapter(listAdapter);
 		}
-	} // onRestoreInstanceState Close   
+	} // onRestoreInstanceState Close  
 
 	// onActivityResult is called when returning from Details or Device
 	// orientation changes to Landscape on Details.
 	// Details passes movie object back via intent extras which are used for
 	// rating alert and or Details display 
 	protected void onActivityResult(int requestCode, int resultCode,
-			Intent detailsBackIntent) { 
+			Intent detailsBackIntent) {
 		Log.i(TAG, "On Activity Result");
 		DetailsActivityFragment detailsFragment = (DetailsActivityFragment) getFragmentManager()
 				.findFragmentById(R.id.detailsFragment); 
