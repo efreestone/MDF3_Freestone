@@ -34,7 +34,7 @@ import com.elijahfreestone.networkConnection.NetworkConnection;
 //TODO: Auto-generated Javadoc
 /**
  * The Class MainActivity.
- */ 
+ */
 public class MainActivity extends Activity implements
 		MainActivityFragment.OnListItemSelected {
 	static Context myContext;
@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements
 	static final String MOVIE_RATING = "movieRating";
 
 	/*   
-	 * (non-Javadoc)  
+	 * (non-Javadoc) 
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */ 
@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements
 		setContentView(R.layout.activity_main_fragment); 
 
 		// Grab instance of DataManager
-		myDataManager = DataManager.getInstance(); 
+		myDataManager = DataManager.getInstance();
 
 		myContext = this;
 
@@ -81,9 +81,9 @@ public class MainActivity extends Activity implements
 				// Call retrieveData to start the Service and get JSON data from
 				// the API
 				retrieveData();
-			} else {    
+			} else {
 				// Show No Connection alert
-				noConnectionAlert(); 
+				noConnectionAlert();
 			}
 
 			Log.i("File", "File DOESN'T exist!!");

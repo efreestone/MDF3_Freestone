@@ -28,19 +28,12 @@
             android:label="@string/detail_name" />
         <service android:name="DataService"></service>
         
-        <activity android:name="com.elijahfreestone.mdf3project3.WidgetConfigActivity"
-            android:label="Configure Widget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
-        </activity>
-        
-        <receiver android:name="MyAppWidgetProvider" >
+        <receiver android:name="MyWidgetProvider" >
             <intent-filter >
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+               <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
 
-            <meta-data
+            <meta-data 
                 android:name="android.appwidget.provider"
                 android:resource="@xml/my_widget" />
         </receiver>
