@@ -114,8 +114,10 @@ public class DetailsActivityFragment extends Fragment {
 		return detailsView;
 	} // onCreateView Close
 
-	// displayMovieDetails displays details of the movie selected, called from
-	// DetailsActivity
+	/*
+	 * displayMovieDetails displays details of the movie selected, called from
+	 * DetailsActivity
+	 */
 	public void displayMovieDetails(String dvdTitle, String releaseDate,
 			String movieRating, String criticRating, String audienceRating) {
 		// Set textviews with strings from intent extras

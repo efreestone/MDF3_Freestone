@@ -67,8 +67,10 @@ public class DetailsActivity extends Activity implements
 		}
 	} // onCreate Close
 
-	// finish is called when the activity is exited (such as the back button)
-	// This creates a new intent and passes the title and rating back
+	/*
+	 * finish is called when the activity is exited (such as the back button)
+	 * This creates a new intent and passes the title and rating back
+	 */
 	@Override
 	public void finish() {
 		Log.i("Details Activity", "Finish called");
@@ -83,12 +85,12 @@ public class DetailsActivity extends Activity implements
 		super.finish();
 	} // finish Close
 
+	/*
+	 * Create implicit intent. This will pass a custom URL searching for the
+	 * movie title on RottenTomatoes.com and open it in a browser
+	 */
 	@Override
 	public void onGetMoreInfoClicked() {
-		// Create implicit intent. This will pass a custom URL searching for the
-		// movie
-		// title on RottenTomatoes.com and open it in a browser
-
 		String baseURLString = "http://www.rottentomatoes.com/m/";
 		String moddedTitle = dvdTitle.replace(" ", "_");
 		String urlSearchMod = baseURLString + moddedTitle;

@@ -20,4 +20,9 @@
     
     <string name="ratingSelectedTitle">Movie Rated</string>
 
+    <string name="configurationTitle">Choose configuration options</string>
+    <string name="darkBackgroundString">Dark Background/Light Text</string>
+	<string name="lightBackgroundString">Light Background/Dark Text</string>  
+	<string name="saveButtonString">Save Configuration</string>  
+
 </resources>

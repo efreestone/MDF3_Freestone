@@ -115,8 +115,9 @@ public class MainActivityFragment extends Fragment implements
 		return mainView;
 	} // onCreateView Close
 
-	// onItemClick grabs movie object selected and passes its info to details as
-	// extras
+	/*
+	 * onItemClick grabs movie object selected and passes its info to details as extras
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
@@ -142,8 +143,9 @@ public class MainActivityFragment extends Fragment implements
 		detailsIntent.putExtra("criticRating", criticRating);
 		detailsIntent.putExtra("audienceRating", audienceRating);
 
-		// Check if details fragment exists and is visible, true if in landscape
-		// mode
+		/*
+		 * Check if details fragment exists and is visible, true if in landscape mode
+		 */
 		if (detailsFragment != null && detailsFragment.isInLayout()) {
 			// Call displayMovieDetails if in landscape mode, skipping intent
 			detailsFragment.displayMovieDetails(dvdTitle, releaseDate,

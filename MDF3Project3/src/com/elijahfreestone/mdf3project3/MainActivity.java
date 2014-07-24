@@ -145,9 +145,10 @@ public class MainActivity extends Activity implements
 		startService(startDataIntent);
 	} // retrieveData Close
 
-	// Custom methods to show no connection, no file, and rating alerts
-	// noConnectionAlert provides an alert dialog when no network connection is
-	// available
+	/*
+	 * Custom methods to show no connection, no file, and rating alerts noConnectionAlert 
+	 * provides an alert dialog when no network connection is available
+	 */
 	public static void noConnectionAlert() {
 		// Create alert dialog for no connection
 		AlertDialog alertDialog = new AlertDialog.Builder(
@@ -161,12 +162,12 @@ public class MainActivity extends Activity implements
 		alertDialog.show();
 	}
 
-	// noFileAlert provides an alert dialog when a file doesn't exist on the
-	// device
+	/*
+	 * noFileAlert provides an alert dialog when a file doesn't exist on the device
+	 */
 	public void noFileAlert() {
 		// Create alert dialog for no file
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
-				.create();
+		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
 		alertDialog.setTitle(R.string.noFileTitle);
 		// Set alert message. setMessage only has a charSequence
 		// version so getString must be used.
@@ -176,22 +177,24 @@ public class MainActivity extends Activity implements
 		alertDialog.show();
 	}
 
-	// ratingSelectedAlert provides an alert dialog when a movie was rated on
-	// the detail activity
+	/*
+	 * ratingSelectedAlert provides an alert dialog when a movie was rated on
+	 * the detail activity
+	 */
 	public void ratingSelectedAlert(String dvdTitle, Float ratingSelected) {
 		// Create alert dialog for rating selected
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
-				.create();
+		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
 		alertDialog.setTitle(R.string.ratingSelectedTitle);
-		String setMessage = "You have rated " + dvdTitle + " " + ratingSelected
-				+ " stars";
+		String setMessage = "You have rated " + dvdTitle + " " + ratingSelected + " stars";
 		alertDialog.setMessage(setMessage);
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
 				(DialogInterface.OnClickListener) null);
 		alertDialog.show();
 	} // Alert methods Close
 
-	// onSaveInstanceState grabs my array list and saves it to the bundle
+	/*
+	 * onSaveInstanceState grabs my array list and saves it to the bundle
+	 */
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
@@ -204,8 +207,9 @@ public class MainActivity extends Activity implements
 		}
 	} // onSaveInstanceState Close
 
-	// onRestore grabs my array list from the bundle if it exists and redisplays
-	// it
+	/*
+	 * onRestore grabs my array list from the bundle if it exists and redisplays it
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -222,47 +226,38 @@ public class MainActivity extends Activity implements
 			SimpleAdapter listAdapter = new SimpleAdapter(myContext,
 					currentMovieList, R.layout.listview_row, new String[] {
 							"dvdTitle", "releaseDate", "movieRating" },
-					new int[] { R.id.dvdTitle, R.id.releaseDate,
-							R.id.movieRating });
+					new int[] { R.id.dvdTitle, R.id.releaseDate, R.id.movieRating });
 
 			myListView.setAdapter(listAdapter);
 		}
 	} // onRestoreInstanceState Close   
 
-	// onActivityResult is called when returning from Details or Device
-	// orientation changes to Landscape on Details.
-	// Details passes movie object back via intent extras which are used for
-	// rating alert and or Details display 
-	protected void onActivityResult(int requestCode, int resultCode,
-			Intent detailsBackIntent) { 
+	/*
+	 * onActivityResult is called when returning from Details or Device orientation 
+	 * changes to Landscape on Details. Details passes movie object back via intent 
+	 * extras which are used for rating alert and or Details display
+	 */
+	protected void onActivityResult(int requestCode, int resultCode, Intent detailsBackIntent) { 
 		Log.i(TAG, "On Activity Result");
 		DetailsActivityFragment detailsFragment = (DetailsActivityFragment) getFragmentManager()
 				.findFragmentById(R.id.detailsFragment); 
 
 		if (resultCode == RESULT_OK && requestCode == 0) {
 			Log.i(TAG, "onActivityResult resultCode = OK");
-			if (detailsBackIntent.hasExtra("dvdTitle")
-					&& detailsBackIntent.hasExtra("ratingSelected")) {
+			if (detailsBackIntent.hasExtra("dvdTitle") && detailsBackIntent.hasExtra("ratingSelected")) {
 				// Pull all extras from Intent
-				String dvdTitle = detailsBackIntent.getExtras().getString(
-						"dvdTitle");
-				String releaseDate = detailsBackIntent.getExtras().getString(
-						"releaseDate");
-				String movieRating = detailsBackIntent.getExtras().getString(
-						"movieRating");
-				String criticRating = detailsBackIntent.getExtras().getString(
-						"criticRating");
-				String audienceRating = detailsBackIntent.getExtras()
-						.getString("audienceRating"); 
+				String dvdTitle = detailsBackIntent.getExtras().getString("dvdTitle");
+				String releaseDate = detailsBackIntent.getExtras().getString("releaseDate");
+				String movieRating = detailsBackIntent.getExtras().getString("movieRating");
+				String criticRating = detailsBackIntent.getExtras().getString("criticRating");
+				String audienceRating = detailsBackIntent.getExtras().getString("audienceRating"); 
 
 				// Float ratingSelected =
 				// detailsBackIntent.getExtras().getFloat("ratingSelected");
 				// ratingSelectedAlert(dvdTitle, ratingSelected);
 
-				// If the device is in landscape, display movie info in details
-				// pane
-				// This is only triggered when in Details in Portrait then
-				// changing device to landscape
+				// If the device is in landscape, display movie info in details pane
+				// This is only triggered when in Details in Portrait then changing device to landscape
 				if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 					detailsFragment.displayMovieDetails(dvdTitle, releaseDate,
 							movieRating, criticRating, audienceRating);
