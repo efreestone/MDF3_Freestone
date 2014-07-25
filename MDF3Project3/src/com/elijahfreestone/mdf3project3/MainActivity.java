@@ -38,14 +38,14 @@ import com.elijahfreestone.networkConnection.NetworkConnection;
 public class MainActivity extends Activity implements
 		MainActivityFragment.OnListItemSelected {
 	static Context myContext;
-	static String TAG = "MainActivity";
+	static String TAG = "MainActivity"; 
 	static String responseString = null;
 	final MyServiceHandler myServiceHandler = new MyServiceHandler(this);
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
 	ArrayList<HashMap<String, String>> currentMovieList;
-
-	static ListView myListView; 
+  
+	static ListView myListView;   
 
 	static final String DVD_TITLE = "dvdTitle";
 	static final String RELEASE_DATE = "releaseDate";
@@ -81,14 +81,14 @@ public class MainActivity extends Activity implements
 				// Call retrieveData to start the Service and get JSON data from
 				// the API
 				retrieveData();
-			} else {    
+			} else {     
 				// Show No Connection alert
 				noConnectionAlert(); 
-			}
+			}   
 
 			Log.i("File", "File DOESN'T exist!!");
 		}
-	} // onCreate Close
+	} // onCreate Close  
 
 	/*
 	 * The Class MyServiceHandler creates a Service Handler with a Weak Ref to

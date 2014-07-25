@@ -44,7 +44,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 
 			backgroundRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-				@Override
+				@Override 
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					RadioButton selectedButton = (RadioButton) findViewById(checkedId);
 					String radioText = selectedButton.getText().toString();
