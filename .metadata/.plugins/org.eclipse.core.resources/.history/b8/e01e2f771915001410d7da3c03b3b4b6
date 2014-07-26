@@ -1,0 +1,49 @@
+package com.elijahfreestone.mdf3project3;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+public class MyWidgetUtility {
+	static Context myContext;
+	static SharedPreferences preferences;
+	static String passedBackgroundColor;
+	static String passedTextColor;
+	static String PREF_NAME = "com.elijahfreestone.mdf3project3";
+	
+	public MyWidgetUtility(Context context) {
+		myContext = context;
+	}
+	
+	public static void savePreferences(String backgroundColor, String textColor) {
+		preferences = MainActivity.preferences;
+		//preferences = myContext.getSharedPreferences(PREF_NAME, 0);
+		Editor editor = preferences.edit();
+		passedBackgroundColor = backgroundColor;
+		passedTextColor = textColor;
+		
+		editor.putString("backgroundColor", passedBackgroundColor);
+		editor.putString("textColor", passedTextColor);
+		editor.apply(); 
+		
+		//MyAppWidgetProvider.backgroundColor = passedBackgroundColor;
+		//MyAppWidgetProvider.textColor = passedTextColor;
+		
+		//getPreferences();
+	}
+	
+	public static void getPreferences() {
+		preferences = MainActivity.preferences;
+		if (preferences != null) {
+			passedBackgroundColor = preferences.getString("backgroundColor", "");
+			passedTextColor = preferences.getString("textColor", "");
+			Log.i("Pref", "Background Color = " + passedBackgroundColor);
+			
+			MyAppWidgetProvider.backgroundColor = passedBackgroundColor;
+			MyAppWidgetProvider.textColor = passedTextColor;
+		}
+	}
+
+}

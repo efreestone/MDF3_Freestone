@@ -1,0 +1,25 @@
+package com.elijahfreestone.mdf3project3;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+
+public class MyWidgetUtility {
+	Context myContext;
+	
+	public MyWidgetUtility(Context context) {
+		myContext = context;
+	}
+	
+	public void savePreferences(String backgroundColor, String textColor) {
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.myContext);
+		Editor editor = preferences.edit();
+		String passedBackgroundColor = backgroundColor;
+		String passedTextColor = textColor;
+		
+		editor.putString("backgroundColor", passedBackgroundColor);
+		editor.putString("textColor", passedTextColor);
+	}
+
+}

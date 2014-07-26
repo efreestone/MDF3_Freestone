@@ -20,11 +20,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -44,6 +47,7 @@ public class MainActivity extends Activity implements
 	static DataManager myDataManager;
 	static String myFileName = "string_from_url.txt";
 	ArrayList<HashMap<String, String>> currentMovieList;
+	static SharedPreferences preferences;
   
 	static ListView myListView;   
 
@@ -58,15 +62,25 @@ public class MainActivity extends Activity implements
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */ 
-	@Override 
+	@Override  
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_fragment);  
+		setContentView(R.layout.activity_main_fragment);   
 
 		// Grab instance of DataManager
 		myDataManager = DataManager.getInstance();  
 
 		myContext = this; 
+		
+		MyAppWidgetProvider.arrayPosition = widgetClickCount;
+		
+		//Set default prefs for Widget. 
+		//This is to avoid crash when widget config hasn't been saved yet
+		preferences = PreferenceManager.getDefaultSharedPreferences(myContext);
+		Editor editor = preferences.edit();
+		editor.putString("backgroundColor", "#ffffff");
+		editor.putString("textColor", "#000000");
+		editor.apply(); 
 
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);
@@ -180,7 +194,7 @@ public class MainActivity extends Activity implements
 		alertDialog.show();
 	}
 
-	/*
+	/*  
 	 * ratingSelectedAlert provides an alert dialog when a movie was rated on
 	 * the detail activity
 	 */
@@ -193,7 +207,7 @@ public class MainActivity extends Activity implements
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
 				(DialogInterface.OnClickListener) null);
 		alertDialog.show();
-	} // Alert methods Close
+	} // Alert methods Close     
 
 	/*
 	 * onSaveInstanceState grabs my array list and saves it to the bundle
@@ -214,7 +228,7 @@ public class MainActivity extends Activity implements
 	 * onRestore grabs my array list from the bundle if it exists and redisplays it
 	 */   
 	@SuppressWarnings("unchecked") 
-	@Override
+	@Override 
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 		// Grab listview and stored Array List from Bundle

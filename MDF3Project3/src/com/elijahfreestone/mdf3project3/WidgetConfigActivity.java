@@ -21,13 +21,12 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RemoteViews;
 
 public class WidgetConfigActivity extends Activity implements OnClickListener {
 	String backgroundColorSelected;
 	String textColorSelected;
-	String backgroundColor;
-	String textColor;
+	static String backgroundColor;
+	static String textColor;
 	
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
@@ -38,11 +37,9 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 		doneButton.setOnClickListener(this);
 		
 		RadioGroup backgroundRadioGroup = (RadioGroup) findViewById(R.id.backgroundRadioGroup);
-		// RadioButton darkRadioButton = (RadioButton) findViewById(R.id.darkRadioButton);
-		// RadioButton lightRadioButton = (RadioButton) findViewById(R.id.lightRadioButton);
 		
-		backgroundColor = "ffffff";
-		textColor = "000000";
+		backgroundColor = "#ffffff";
+		textColor = "#000000";
 
 		backgroundColorSelected = "test";
 		if (backgroundRadioGroup != null) {
@@ -57,10 +54,12 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 
 					if (radioText.equalsIgnoreCase("Dark Background/Light Text")) {
 						backgroundColorSelected = radioText;
-						backgroundColor = "000000";
-						textColor = "ffffff";
+						backgroundColor = "#000000";
+						textColor = "#ffffff";
 					} else {
 						backgroundColorSelected = radioText;
+						backgroundColor = "#ffffff";
+						textColor = "#000000";
 					}
 				}
 			});
@@ -81,21 +80,32 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 		
 		if (extras != null) {
 			int widgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
-					AppWidgetManager.INVALID_APPWIDGET_ID);
+					AppWidgetManager.INVALID_APPWIDGET_ID); 
+			
+			MyWidgetUtility.savePreferences(backgroundColor, textColor); 
 			
 			if (widgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
-				RemoteViews remoteView = new RemoteViews(getPackageName(), R.layout.widget_layout);
-				remoteView.setTextViewText(R.id.movieTitle, backgroundColorSelected);
+				//RemoteViews remoteView = new RemoteViews(getPackageName(), R.layout.widget_layout);
+				//remoteView.setTextViewText(R.id.movieTitle, backgroundColorSelected);
 				//remoteView.setTextColor(R.id.movieTitle, textColor.);
+				//remoteView.setInt(widgetId, methodName, value)
+				//remoteView.setImageViewResource(R.id.backgroundColor, R.drawable.rounded_corner);
+				//remoteView.setInt(R.id.backgroundColor, "setColorFilter", Color.parseColor(backgroundColor));
+				//remoteView.setInt(R.id.backgroundColor, "setAlpha", alpha);
 				
-				AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
-				Log.i("Widget", "Widget ID valid");
+				//AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
+				//MyAppWidgetProvider.pushUpdateToWidget(this, remoteView);
+				Log.i("Widget", "Widget ID: " + widgetId); 
+				
+//				PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,
+//						getIntent(), PendingIntent.FLAG_UPDATE_CURRENT);
+//				remoteView.setOnClickPendingIntent(R.id.buttonForward, pendingIntent);
 				
 				Intent resultValue = new Intent();
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
 				setResult(RESULT_OK, resultValue);
 				
-				finish();
+				finish();  
 				
 			}
 			

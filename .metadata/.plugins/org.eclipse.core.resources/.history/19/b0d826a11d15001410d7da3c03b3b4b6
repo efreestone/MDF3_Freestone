@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    android:orientation="vertical" >
+    
+    <ImageView 
+            android:id="@+id/backgroundColor"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:alpha="0.90"
+            android:src="@drawable/rounded_corner"
+            android:contentDescription="@string/imageViewDesc" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >    
+        
+        <Button 
+            android:id="@+id/buttonBack"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="onBackClick"
+            android:background="@drawable/back_button_background"/>
+        <TextView 
+            android:id="@+id/movieTitle"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:layout_weight="2"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp" />
+        <Button 
+            android:id="@+id/buttonForward"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="onForwardClick"
+            android:background="@drawable/forward_button_background"/>
+    </LinearLayout>
+
+</FrameLayout>

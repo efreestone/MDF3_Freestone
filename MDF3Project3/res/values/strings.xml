@@ -24,5 +24,7 @@
     <string name="darkBackgroundString">Dark Background/Light Text</string>
 	<string name="lightBackgroundString">Light Background/Dark Text</string>  
 	<string name="saveButtonString">Save Configuration</string>  
+	
+	<string name="imageViewDesc">Background Color</string>
 
 </resources>
