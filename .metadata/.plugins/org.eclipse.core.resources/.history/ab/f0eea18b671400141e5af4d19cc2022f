@@ -98,15 +98,13 @@ public class JSONData {
 							R.id.dvdTitle, R.id.releaseDate, R.id.movieRating });
 
 			MainActivityFragment.myListView.setAdapter(listAdapter);
-			
-			sendArrayListToWidget();
 
 		} catch (JSONException e) {
 			Log.e("displayDataFromFile ERROR", e.getMessage().toString());
 		}
 	} // displayDataFromFile Close
 	
-	public static void sendArrayListToWidget() {
+	public static void sendArrayListForWidget() {
 		MyAppWidgetProvider.widgetMovieList = myList; 
 	}
 

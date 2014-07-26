@@ -39,10 +39,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		if (widgetMovieList != null) {
 			int arraySize = widgetMovieList.size();
 			Log.i("Widget Array", "Widget Array = " + arraySize);
-			String movieTitleString = widgetMovieList.get(arrayPosition).get("dvdTitle");
-			String movieReleaseString = widgetMovieList.get(arrayPosition).get("releaseDate");
-			String movieRatingString = widgetMovieList.get(arrayPosition).get("movieRating");
-			movieString = movieTitleString + "\n" + movieReleaseString + "\n" + movieRatingString;
+			movieString = widgetMovieList.get(arrayPosition).get("dvdTitle");
 			Log.i("Widget", "Movie String = " + movieString);
 		} 
 		
@@ -57,7 +54,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 				R.layout.widget_layout);
-		remoteViews.setTextViewText(R.id.movieTitle, movieString);
+		remoteViews.setTextViewText(R.id.movieTitle, String.valueOf(arrayPosition));
 		
 		Intent intent = new Intent(context, MyAppWidgetProvider.class);
 		intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
@@ -67,7 +64,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 				intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		remoteViews.setOnClickPendingIntent(R.id.button1, pendingIntent);
 		appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
-		//pushUpdateToWidget(context, remoteViews);    
+		//pushUpdateToWidget(context, remoteViews);   
 	} 
 	
 	@Override

@@ -10,9 +10,6 @@
 
 package com.elijahfreestone.mdf3project3;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -23,9 +20,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 public class MyAppWidgetProvider extends AppWidgetProvider { 
-	int arrayPosition;
-	static ArrayList<HashMap<String, String>> widgetMovieList = null;
-	String movieString;
+	Integer testInt;
 	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -33,31 +28,29 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 		//Log.i("Widget Provider", "onUpdate ID: " + appWidgetIds[0]); 
 		
+		//Integer testInt = MainActivity.testInt;
+		
 		//Log.i("Widget", "before ++ " + testInt);
-		arrayPosition = MainActivity.widgetClickCount++;
+		testInt = MainActivity.widgetClickCount++;
 		
-		if (widgetMovieList != null) {
-			int arraySize = widgetMovieList.size();
-			Log.i("Widget Array", "Widget Array = " + arraySize);
-			String movieTitleString = widgetMovieList.get(arrayPosition).get("dvdTitle");
-			String movieReleaseString = widgetMovieList.get(arrayPosition).get("releaseDate");
-			String movieRatingString = widgetMovieList.get(arrayPosition).get("movieRating");
-			movieString = movieTitleString + "\n" + movieReleaseString + "\n" + movieRatingString;
-			Log.i("Widget", "Movie String = " + movieString);
-		} 
+//		if (testInt == null) {
+//			testInt = 0;
+//		} else {
+//			testInt++;
+//		} 
 		
-		if (arrayPosition < 9) {
+		if (testInt < 9) {
 			Log.i("Widget", "Click count = " + MainActivity.widgetClickCount);
 		} else {
 			MainActivity.widgetClickCount = 0;
 			Log.i("Widget", "Click count reset = " + MainActivity.widgetClickCount);
 		} 
 
-		Log.i("Widget", "test int = " + arrayPosition); 
+		Log.i("Widget", "test int = " + testInt);
 		
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 				R.layout.widget_layout);
-		remoteViews.setTextViewText(R.id.movieTitle, movieString);
+		remoteViews.setTextViewText(R.id.movieTitle, String.valueOf(testInt));
 		
 		Intent intent = new Intent(context, MyAppWidgetProvider.class);
 		intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
@@ -67,7 +60,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 				intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		remoteViews.setOnClickPendingIntent(R.id.button1, pendingIntent);
 		appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
-		//pushUpdateToWidget(context, remoteViews);    
+		//pushUpdateToWidget(context, remoteViews);
 	} 
 	
 	@Override

@@ -74,7 +74,6 @@ public class MainActivity extends Activity implements
 		if (fileExists) {
 			// Display the data to the listview automatically if file exists
 			JSONData.displayDataFromFile();
-			//JSONData.sendArrayListToWidget(); 
 
 			Log.i("File", "File exists");
 		} else {

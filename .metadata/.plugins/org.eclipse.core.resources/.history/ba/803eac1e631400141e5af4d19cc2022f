@@ -1,13 +1,3 @@
-/*
- * @author	Elijah Freestone 
- *
- * Project	MDF3Project3
- * 
- * Package	com.elijahfreestone.mdf3project3
- * 
- * Date		Jul 25, 2014
- */
-
 package com.elijahfreestone.mdf3project3;
 
 import java.util.ArrayList;
@@ -41,8 +31,6 @@ public class WidgetBroadcastReceiver extends BroadcastReceiver {
 			clickCount = 0;
 			Log.i("Widget", "Click count reset");
 		}
-		
-		Log.i("Widget", "updateMovieWidget");
 		
 		MyAppWidgetProvider.pushUpdateToWidget(context.getApplicationContext(), remoteViews);
 	} 

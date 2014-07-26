@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements
 	static final String RELEASE_DATE = "releaseDate";
 	static final String MOVIE_RATING = "movieRating";
 	
-	static int widgetClickCount = 0;
+	static int clickCount;
 
 	/*   
 	 * (non-Javadoc)  
@@ -64,9 +64,11 @@ public class MainActivity extends Activity implements
 		setContentView(R.layout.activity_main_fragment); 
 
 		// Grab instance of DataManager
-		myDataManager = DataManager.getInstance();  
+		myDataManager = DataManager.getInstance(); 
 
 		myContext = this; 
+		
+		clickCount = 0;
 
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);
@@ -74,7 +76,6 @@ public class MainActivity extends Activity implements
 		if (fileExists) {
 			// Display the data to the listview automatically if file exists
 			JSONData.displayDataFromFile();
-			//JSONData.sendArrayListToWidget(); 
 
 			Log.i("File", "File exists");
 		} else {
