@@ -46,7 +46,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 			String movieReleaseString = widgetMovieList.get(arrayPosition).get("releaseDate");
 			String movieRatingString = widgetMovieList.get(arrayPosition).get("movieRating");
 			movieString = movieTitleString + "\n" + movieReleaseString + "\n" + movieRatingString;
-			Log.i("Widget", "Movie String = " + movieString); 
+			Log.i("Widget", "Movie String = " + movieString);
 		} 
 		
 		if (arrayPosition < 9) {

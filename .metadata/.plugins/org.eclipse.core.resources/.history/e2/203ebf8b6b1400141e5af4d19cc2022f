@@ -34,10 +34,10 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 		//Log.i("Widget Provider", "onUpdate ID: " + appWidgetIds[0]); 
 		
+		Button plusButton = (Button);
+		
 		//Log.i("Widget", "before ++ " + testInt);
 		arrayPosition = MainActivity.widgetClickCount++;
-		
-		movieString = "Loading... Please click plus to load a movie";
 		
 		if (widgetMovieList != null) {
 			int arraySize = widgetMovieList.size();
@@ -46,7 +46,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 			String movieReleaseString = widgetMovieList.get(arrayPosition).get("releaseDate");
 			String movieRatingString = widgetMovieList.get(arrayPosition).get("movieRating");
 			movieString = movieTitleString + "\n" + movieReleaseString + "\n" + movieRatingString;
-			Log.i("Widget", "Movie String = " + movieString); 
+			Log.i("Widget", "Movie String = " + movieString);
 		} 
 		
 		if (arrayPosition < 9) {
