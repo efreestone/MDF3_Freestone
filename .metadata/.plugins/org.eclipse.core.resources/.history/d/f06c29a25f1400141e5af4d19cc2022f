@@ -1,0 +1,25 @@
+package com.elijahfreestone.mdf3project3;
+
+import android.appwidget.AppWidgetManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.RemoteViews;
+
+public class WidgetBroadcastReceiver extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+			updateMovieWidget(context);
+		}
+	}
+	
+	public void updateMovieWidget(Context context) {
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+		
+		MyAppWidgetProvider.pushUpdateToWidget(context.getApplicationContext(), remoteViews);
+		
+	}
+
+}

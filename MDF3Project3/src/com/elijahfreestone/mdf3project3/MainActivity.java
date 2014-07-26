@@ -50,6 +50,8 @@ public class MainActivity extends Activity implements
 	static final String DVD_TITLE = "dvdTitle";
 	static final String RELEASE_DATE = "releaseDate";
 	static final String MOVIE_RATING = "movieRating";
+	
+	static Integer testInt = null;  
 
 	/*   
 	 * (non-Javadoc)  
@@ -65,6 +67,8 @@ public class MainActivity extends Activity implements
 		myDataManager = DataManager.getInstance(); 
 
 		myContext = this;
+		
+		testInt = 0;
 
 		// Check if the file already exists
 		File file = this.getFileStreamPath(myFileName);

@@ -31,7 +31,6 @@
 <fullyQualifiedTypeName name="android.os.Environment"/>
 <fullyQualifiedTypeName name="android.media.MediaScannerConnection"/>
 <fullyQualifiedTypeName name="android.media.MediaScannerConnection.OnScanCompletedListener"/>
-<fullyQualifiedTypeName name="android.app.PendingIntent"/>
 <fullyQualifiedTypeName name="android.app.Notification.Builder"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project2.R.drawable"/>
 <fullyQualifiedTypeName name="android.app.Notification"/>
@@ -54,10 +53,11 @@
 <fullyQualifiedTypeName name="android.widget.RadioButton"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup.OnCheckedChangeListener"/>
-<fullyQualifiedTypeName name="android.widget.RemoteViews"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project3.R.layout"/>
 <fullyQualifiedTypeName name="com.elijahfreestone.mdf3project3.R.id"/>
-<fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.appwidget.AppWidgetManager"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.widget.RemoteViews"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.app.PendingIntent"/>
 </qualifiedTypeNameHistroy>
