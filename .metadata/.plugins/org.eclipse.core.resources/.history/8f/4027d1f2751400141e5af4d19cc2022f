@@ -24,7 +24,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RemoteViews;
 
 public class WidgetConfigActivity extends Activity implements OnClickListener {
-	String backgroundColorSelected;
+	//String backgroundColorSelected;
 	String textColorSelected;
 	String backgroundColor;
 	String textColor;
@@ -44,7 +44,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 		backgroundColor = "ffffff";
 		textColor = "000000";
 
-		backgroundColorSelected = "test";
+		//backgroundColorSelected = "test";
 		if (backgroundRadioGroup != null) {
 
 			backgroundRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -56,11 +56,11 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 					Log.i("Radio", "Radio Selected" + radioText);
 
 					if (radioText.equalsIgnoreCase("Dark Background/Light Text")) {
-						backgroundColorSelected = radioText;
+						//backgroundColorSelected = radioText;
 						backgroundColor = "000000";
 						textColor = "ffffff";
 					} else {
-						backgroundColorSelected = radioText;
+						//backgroundColorSelected = radioText;
 					}
 				}
 			});

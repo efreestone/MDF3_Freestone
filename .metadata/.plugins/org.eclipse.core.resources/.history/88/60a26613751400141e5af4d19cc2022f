@@ -40,9 +40,6 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 		RadioGroup backgroundRadioGroup = (RadioGroup) findViewById(R.id.backgroundRadioGroup);
 		// RadioButton darkRadioButton = (RadioButton) findViewById(R.id.darkRadioButton);
 		// RadioButton lightRadioButton = (RadioButton) findViewById(R.id.lightRadioButton);
-		
-		backgroundColor = "ffffff";
-		textColor = "000000";
 
 		backgroundColorSelected = "test";
 		if (backgroundRadioGroup != null) {
@@ -57,8 +54,6 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 
 					if (radioText.equalsIgnoreCase("Dark Background/Light Text")) {
 						backgroundColorSelected = radioText;
-						backgroundColor = "000000";
-						textColor = "ffffff";
 					} else {
 						backgroundColorSelected = radioText;
 					}
@@ -86,7 +81,6 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 			if (widgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
 				RemoteViews remoteView = new RemoteViews(getPackageName(), R.layout.widget_layout);
 				remoteView.setTextViewText(R.id.movieTitle, backgroundColorSelected);
-				//remoteView.setTextColor(R.id.movieTitle, textColor.);
 				
 				AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
 				Log.i("Widget", "Widget ID valid");

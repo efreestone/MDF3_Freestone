@@ -20,14 +20,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.RemoteViews;
 
 public class MyAppWidgetProvider extends AppWidgetProvider { 
 	int arrayPosition;
 	static ArrayList<HashMap<String, String>> widgetMovieList = null;
 	String movieString;
-	String backgroundColor;
-	String textColor;
 	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -35,6 +34,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 		//Log.i("Widget Provider", "onUpdate ID: " + appWidgetIds[0]); 
 		
+		//Log.i("Widget", "before ++ " + testInt);
 		arrayPosition = MainActivity.widgetClickCount++;
 		
 		movieString = "Loading... Please click plus to load a movie";
@@ -45,7 +45,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 			String movieTitleString = widgetMovieList.get(arrayPosition).get("dvdTitle");
 			String movieReleaseString = widgetMovieList.get(arrayPosition).get("releaseDate");
 			String movieRatingString = widgetMovieList.get(arrayPosition).get("movieRating");
-			
 			movieString = movieTitleString + "\n" + movieReleaseString + "\n" + movieRatingString;
 			Log.i("Widget", "Movie String = " + movieString); 
 		} 
