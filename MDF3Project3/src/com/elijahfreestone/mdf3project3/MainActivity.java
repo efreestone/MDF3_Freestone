@@ -209,11 +209,11 @@ public class MainActivity extends Activity implements
 			Log.i("Save", "Movie List Instance State Saved");
 		}
 	} // onSaveInstanceState Close
-
-	/*
+  
+	/* 
 	 * onRestore grabs my array list from the bundle if it exists and redisplays it
-	 */
-	@SuppressWarnings("unchecked")
+	 */   
+	@SuppressWarnings("unchecked") 
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
@@ -231,8 +231,8 @@ public class MainActivity extends Activity implements
 							"dvdTitle", "releaseDate", "movieRating" },
 					new int[] { R.id.dvdTitle, R.id.releaseDate, R.id.movieRating });
 
-			myListView.setAdapter(listAdapter);
-		}
+			myListView.setAdapter(listAdapter); 
+		} 
 	} // onRestoreInstanceState Close   
 
 	/*

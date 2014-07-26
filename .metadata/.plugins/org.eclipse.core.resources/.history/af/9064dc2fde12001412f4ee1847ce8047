@@ -1,7 +1,0 @@
-package com.elijahfreestone.mdf3project3;
-
-import android.appwidget.AppWidgetProvider;
-
-public class MyAppWidgetProvider extends AppWidgetProvider {
-
-}
