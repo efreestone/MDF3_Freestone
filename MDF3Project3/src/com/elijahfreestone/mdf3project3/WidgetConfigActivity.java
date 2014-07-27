@@ -28,6 +28,9 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 	static String backgroundColor;
 	static String textColor;
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,15 +68,12 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 			});
 		}
 	};
-	
-//	private void displayAlert(String message) {
-//		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this)
-//		.setMessage(message)
-//		.setCancelable(true);
-//		alertBuilder.create().show();
-//		
-//	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 * 
+	 * onClick saves background/text color prefs and finishes config 
+	 */
 	@Override
 	public void onClick(View v) { 
 		Bundle extras = getIntent().getExtras();
@@ -101,9 +101,15 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 //						getIntent(), PendingIntent.FLAG_UPDATE_CURRENT);
 //				remoteView.setOnClickPendingIntent(R.id.buttonForward, pendingIntent);
 				
+//				Intent uriIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
+//				PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 0, uriIntent, 0);
+//				remoteView.setOnClickPendingIntent(R.id.buttonBack, pendingIntent2);
+//				
+//				AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
+				
 				Intent resultValue = new Intent();
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
-				setResult(RESULT_OK, resultValue);
+				setResult(RESULT_OK, resultValue); 
 				
 				finish();  
 				

@@ -12,6 +12,7 @@
             android:scaleType="fitXY"
             android:alpha="0.90"
             android:src="@drawable/rounded_corner"
+            android:clickable="true"
             android:contentDescription="@string/imageViewDesc" />
     
     <LinearLayout 
@@ -26,7 +27,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/back_button_background"/>
         <TextView 
-            android:id="@+id/movieTitle"
+            android:id="@+id/widgetMovieTitle"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -34,7 +35,8 @@
             android:textColor="#ffffff"
             android:layout_weight="2"
             android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp" />
+            android:layout_marginRight="4dp"
+            android:clickable="true" />
         <Button 
             android:id="@+id/buttonForward"
             android:layout_weight="1"
