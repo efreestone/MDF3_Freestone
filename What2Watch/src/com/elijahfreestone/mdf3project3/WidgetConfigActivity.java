@@ -42,7 +42,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 		RadioGroup backgroundRadioGroup = (RadioGroup) findViewById(R.id.backgroundRadioGroup);
 		
 		backgroundColor = "#ffffff";
-		textColor = "#000000";
+		textColor = "#212121";
 
 		backgroundColorSelected = "test";
 		if (backgroundRadioGroup != null) {
@@ -57,12 +57,12 @@ public class WidgetConfigActivity extends Activity implements OnClickListener {
 
 					if (radioText.equalsIgnoreCase("Dark Background/Light Text")) {
 						backgroundColorSelected = radioText;
-						backgroundColor = "#000000";
+						backgroundColor = "#212121";
 						textColor = "#ffffff";
 					} else {
 						backgroundColorSelected = radioText;
 						backgroundColor = "#ffffff";
-						textColor = "#000000";
+						textColor = "#212121";
 					}
 				}
 			});

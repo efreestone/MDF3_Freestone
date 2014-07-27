@@ -13,9 +13,9 @@ package com.elijahfreestone.mdf3project3;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashMap; 
 
-import android.app.Activity;
+import android.app.Activity; 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,13 +30,13 @@ import android.os.Messenger;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.SimpleAdapter; 
 
-import com.elijahfreestone.networkConnection.NetworkConnection;
+import com.elijahfreestone.networkConnection.NetworkConnection; 
 
 //TODO: Auto-generated Javadoc 
 /**
- * The Class MainActivity.  
+ * The Class MainActivity.    
  */ 
 public class MainActivity extends Activity implements
 		MainActivityFragment.OnListItemSelected {
@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements
 	 *  
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */ 
-	@Override  
+	@Override     
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_fragment);   
@@ -70,8 +70,8 @@ public class MainActivity extends Activity implements
 		// Grab instance of DataManager
 		myDataManager = DataManager.getInstance();  
 
-		myContext = this; 
-		
+		myContext = this;   
+		 
 		MyAppWidgetProvider.arrayPosition = widgetClickCount;
 		
 		//Set default prefs for Widget. 
@@ -81,8 +81,8 @@ public class MainActivity extends Activity implements
 		if (prefsString == null) {
 			Editor editor = preferences.edit();
 			editor.putString("backgroundColor", "#ffffff");
-			editor.putString("textColor", "#000000");
-			editor.apply(); 
+			editor.putString("textColor", "#212121");
+			editor.apply();  
 		} 
 
 		// Check if the file already exists
@@ -250,7 +250,7 @@ public class MainActivity extends Activity implements
 
 			myListView.setAdapter(listAdapter); 
 		} 
-	} // onRestoreInstanceState Close   
+	} // onRestoreInstanceState Close     
 
 	/*
 	 * onActivityResult is called when returning from Details or Device orientation 
@@ -274,7 +274,7 @@ public class MainActivity extends Activity implements
 
 				// Float ratingSelected =
 				// detailsBackIntent.getExtras().getFloat("ratingSelected");
-				// ratingSelectedAlert(dvdTitle, ratingSelected);
+				// ratingSelectedAlert(dvdTitle, ratingSelected); 
 
 				// If the device is in landscape, display movie info in details pane
 				// This is only triggered when in Details in Portrait then changing device to landscape
