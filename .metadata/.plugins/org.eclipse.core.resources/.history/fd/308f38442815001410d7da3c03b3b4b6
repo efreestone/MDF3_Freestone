@@ -62,6 +62,7 @@ public class MyWidgetUtility {
 			Log.i("Pref", "Background Color = " + passedBackgroundColor);
 			
 			//Set vars on widget provider to set widget colors.
+			
 			MyAppWidgetProvider.backgroundColor = passedBackgroundColor;
 			MyAppWidgetProvider.textColor = passedTextColor;
 		}

@@ -62,6 +62,8 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		
 		movieString = "Movie list loaded. Please click forward to load a movie";
 		
+		Intent uriIntent = new Intent(context, DetailsActivity.class);
+		
 		if (widgetMovieList != null) {
 			int arraySize = widgetMovieList.size();
 			Log.i("Widget Array", "Widget Array = " + arraySize);
@@ -95,7 +97,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		
 		//Create intent for movie selection in widget.
 		//This currently always sets to the first item in the arraylist. Not sure why yet.
-		Intent uriIntent = new Intent(context, DetailsActivity.class);
 		uriIntent.putExtra("dvdTitle", movieTitleString);
 		uriIntent.putExtra("releaseDate", movieReleaseString);
 		uriIntent.putExtra("movieRating", movieRatingString);

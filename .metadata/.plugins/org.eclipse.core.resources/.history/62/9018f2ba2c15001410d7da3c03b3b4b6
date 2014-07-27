@@ -37,11 +37,11 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 	 */
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-		String movieTitleString = null;
-		String movieReleaseString = null;
-		String movieRatingString = null;
-		String criticRatingString = null;
-		String audienceRatingString = null;
+		String movieTitleString;
+		String movieReleaseString;
+		String movieRatingString;
+		String criticRatingString;
+		String audienceRatingString;
 		
 		// TODO Auto-generated method stub
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
@@ -61,6 +61,8 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		arrayPosition = MainActivity.widgetClickCount++;
 		
 		movieString = "Movie list loaded. Please click forward to load a movie";
+		
+		Intent uriIntent = new Intent(context, DetailsActivity.class);
 		
 		if (widgetMovieList != null) {
 			int arraySize = widgetMovieList.size();
@@ -95,7 +97,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 		
 		//Create intent for movie selection in widget.
 		//This currently always sets to the first item in the arraylist. Not sure why yet.
-		Intent uriIntent = new Intent(context, DetailsActivity.class);
 		uriIntent.putExtra("dvdTitle", movieTitleString);
 		uriIntent.putExtra("releaseDate", movieReleaseString);
 		uriIntent.putExtra("movieRating", movieRatingString);

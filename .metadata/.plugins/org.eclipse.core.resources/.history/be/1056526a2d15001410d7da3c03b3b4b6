@@ -119,7 +119,8 @@ public class MainActivityFragment extends Fragment implements
 	 * onItemClick grabs movie object selected and passes its info to details as extras
 	 */
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
 		DetailsActivityFragment detailsFragment = (DetailsActivityFragment) getFragmentManager()
 				.findFragmentById(R.id.detailsFragment);
 
