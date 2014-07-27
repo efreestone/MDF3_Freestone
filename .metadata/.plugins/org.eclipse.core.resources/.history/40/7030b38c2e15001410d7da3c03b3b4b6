@@ -10,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:gravity="center"
         android:text="@string/configurationTitle"
-        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
         android:textColor="#ffffff"
         android:ems="10" />
     
@@ -21,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
         <RadioButton
             android:id="@+id/darkRadioButton"
             android:layout_width="match_parent"
@@ -41,12 +40,8 @@
     
     <Button 
         android:id="@+id/doneButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_background"
-        android:width="250dp" 
         android:text="@string/saveButtonString" />
 
 </LinearLayout>

@@ -36,7 +36,7 @@ import com.elijahfreestone.networkConnection.NetworkConnection;
 
 //TODO: Auto-generated Javadoc
 /**
- * The Class MainActivity. 
+ * The Class MainActivity.
  */ 
 public class MainActivity extends Activity implements
 		MainActivityFragment.OnListItemSelected {
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements
 
 	/*   
 	 * (non-Javadoc)   
-	 *  
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */ 
 	@Override  

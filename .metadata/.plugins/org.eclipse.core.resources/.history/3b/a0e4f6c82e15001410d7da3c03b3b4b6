@@ -36,7 +36,7 @@ import com.elijahfreestone.networkConnection.NetworkConnection;
 
 //TODO: Auto-generated Javadoc
 /**
- * The Class MainActivity. 
+ * The Class MainActivity.
  */ 
 public class MainActivity extends Activity implements
 		MainActivityFragment.OnListItemSelected {
@@ -49,17 +49,17 @@ public class MainActivity extends Activity implements
 	ArrayList<HashMap<String, String>> currentMovieList;
 	static SharedPreferences preferences; 
   
-	static ListView myListView;    
+	static ListView myListView;   
 
 	static final String DVD_TITLE = "dvdTitle";
 	static final String RELEASE_DATE = "releaseDate";
 	static final String MOVIE_RATING = "movieRating";
 	
-	static int widgetClickCount = 0;  
+	static int widgetClickCount = 0; 
 
 	/*   
 	 * (non-Javadoc)   
-	 *  
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */ 
 	@Override  

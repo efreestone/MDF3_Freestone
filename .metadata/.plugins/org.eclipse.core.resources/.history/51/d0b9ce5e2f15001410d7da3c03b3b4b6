@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center"
         android:text="@string/configurationTitle"
-        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
         android:textColor="#ffffff"
         android:ems="10" />
     
