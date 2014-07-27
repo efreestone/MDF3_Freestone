@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/main_background" >
+    
+    <TextView 
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/configurationTitle"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:ems="10" />
+    
+    <RadioGroup
+        android:id="@+id/backgroundRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+        <RadioButton
+            android:id="@+id/darkRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textColor="#ffffff"
+            android:text="@string/darkBackgroundString" />
+
+        <RadioButton
+            android:id="@+id/lightRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textColor="#ffffff"
+            android:text="@string/lightBackgroundString" />
+    </RadioGroup>
+    
+    <Button 
+        android:id="@+id/doneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveButtonString" />
+
+</LinearLayout>

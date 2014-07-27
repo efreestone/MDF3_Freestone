@@ -1,7 +1,0 @@
-package com.elijahfreestone.mdf3project2;
-
-import android.view.SurfaceView;
-
-public class LaunchCamera extends SurfaceView {
-
-}

@@ -1,0 +1,8 @@
+/** Automatically generated file. DO NOT MODIFY */
+package com.elijahfreestone.mdf3project3;
+
+public final class BuildConfig {
+    
+    /** The Constant DEBUG. */
+    public final static boolean DEBUG = true;
+}
