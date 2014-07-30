@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 		
 		//Grab webview and load test url
 		myWebView = (WebView) findViewById(R.id.myWebView);
-		myWebView.loadUrl("https://www.google.com/"); 
+		myWebView.loadUrl("http://www.google.com");
 
 	}   
 
