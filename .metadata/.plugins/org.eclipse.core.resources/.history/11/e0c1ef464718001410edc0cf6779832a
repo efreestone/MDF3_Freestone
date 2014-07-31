@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
 		
 		//Grab web settings and enable javascript
 		WebSettings webSettings = myWebView.getSettings();
-		webSettings.setJavaScriptEnabled(true);  
- 
-	}       
+		webSettings.setJavaScriptEnabled(true); 
+
+	}      
 
 }

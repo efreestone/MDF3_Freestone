@@ -1,0 +1,11 @@
+/*
+Elijah Freestone
+MDF3 1407
+Project 4
+7-30-14
+*/
+
+.ui-page { /* Override JQM background and replace with my background*/
+	background-image: none;
+    background-color: #7ED0E0 !important;
+}

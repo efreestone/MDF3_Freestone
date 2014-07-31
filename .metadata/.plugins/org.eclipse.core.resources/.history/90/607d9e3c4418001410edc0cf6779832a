@@ -12,7 +12,6 @@ package com.elijahfreestone.mdf3project4;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class MainActivity extends Activity {
@@ -24,16 +23,14 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+//		setContentView(R.layout.activity_main);
 		
 		//Grab webview and load test url
 		myWebView = (WebView) findViewById(R.id.myWebView);
-		myWebView.loadUrl("file:///android_asset/index.html");
+		myWebView.loadUrl("file://android_asset/index.html");
 		
-		//Grab web settings and enable javascript
-		WebSettings webSettings = myWebView.getSettings();
-		webSettings.setJavaScriptEnabled(true);  
- 
-	}       
+		setContentView(R.layout.activity_main); 
+
+	}   
 
 }
