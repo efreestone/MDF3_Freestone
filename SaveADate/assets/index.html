@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- Elijah Freestone -->
+<!-- MDF3 1407 -->
+<!-- Project 4 -->
+<!-- 7-30-14 -->
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Save-a-date</title>
+
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- StyleSheets under here -->
+		<link rel="stylesheet" href="css/indexStyles.css" type="text/css" />
+
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects 
+		<script src="js/libs/modernizr.custom.min.js"></script> -->
+		
+	</head>
+	
+	<body>
+		<div data-role="page" id="index">
+			<h1><img src="img/Logo.jpg"></img></h1>
+			<form action="#" method="post" id="eventForm"/>
+				<fieldset id="inputTop" data-role="none">
+				<legend>Event Info</legend>
+				<span id="notice">* fields are required.</span>
+				<ul id="errors"></ul>
+				<ul data-role="content">
+		<!-- Event Title -->
+					<li><label for="eventTitle">*Event Title:</label>
+						<input type="text" name="eventTitle" id="eventTitle" value="" placeholder="Dads birthday, etc." class="required" data-role="none"/>
+					</li>
+		<!-- Date of Event -->
+					<li><label for="eventDate">*Event Date:</label>
+						<input type="date" data-role="date" name="eventDate" id="eventDate" value="" class="required"/>
+					</li>
+		<!-- Type of Event -->
+					<li><label for="eventType">*Type of Event:</label>
+						<select name="eventType" id="eventType"  class="required" data-role="none">
+							<option value="" data-placeholder="true">--Choose An Event Type--</option>
+							<option value="Anniversary">Anniversary</option>
+							<option value="Appointment">Appointment</option>
+							<option value="Birthday">Birthday</option>
+							<option value="Meeting">Meeting</option>
+							<option value="Other">Other</option>
+						</select>
+					</li>
+		<!-- Importance of Event Slider 
+					<li><label for="importance">Importance:</label>
+						<input type="range" name="importance" id="importance" value="3" min="1" max="5" data-track-theme="c" data-mini="true"/>	-->
+		<!-- Attendance required?  -->
+					<li>Is Attendance Required?
+						<ul class="checkbox">
+							<li><input type="radio" value="Yes" id="Yes" name="attend" data-role="none"/>
+								<label for="Yes">Yes</label></li>
+							<li><input type="radio" value="No" id="No" name="attend" data-role="none"/>
+								<label for="No">No</label></li>
+							<li><input type="radio" value="Undecided" id="Undecided" name="attend" checked="checked" data-role="none"/>
+								<label for="Undecided">Undecided</label></li>
+						</ul>
+					</li>
+				</ul>				
+				</fieldset>
+				
+				<fieldset id="inputBottom" data-role="none">
+					<legend>Event Details</legend>
+		<!-- Event Details (ie location of party etc) -->
+					<label for="eventDetails"></label>
+						<textarea data-role="none" id="eventDetails" placeholder="Party Location, Contact Info, etc."></textarea>
+				</fieldset>
+		<!-- Submit Button -->	
+				<input type="submit" value="Save Date!" id="submit" data-role="none" Data-ajax="false"/>
+		<!-- Reset Form Button -->
+				<input type="reset" value="Reset Form" id="reset" data-icon="delete" data-mini="true" data-inline="true" data-role="none"/>
+				
+				<a href="#formErrors" id="popErrors" data-rel="dialog" data-transition="pop">Open Errors</a>
+			</form>
+		
+		</div>
+	<!-- End of Index -->
+		
+	<!-- JavaScript and libs files -->
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	</body>
+</html>
