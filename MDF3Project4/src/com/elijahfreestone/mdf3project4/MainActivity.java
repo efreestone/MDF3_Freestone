@@ -46,34 +46,34 @@ public class MainActivity extends Activity {
 		
 		myWebView.addJavascriptInterface(new EventAppInterface(this), "Android");
   
-	} //onCreate close        
+	} //onCreate close                  
 	
-	public class EventAppInterface { 
-		Context myContext;       
+	public class EventAppInterface {   
+		Context myContext;        
 		
-		EventAppInterface(Context context) {
+		EventAppInterface(Context context) { 
 			myContext = context; 
-			Log.i("JavaScript", "Interface Instantiated");
-		}          
+			Log.i("JavaScript", "Interface Instantiated"); 
+		}            
 		
 		@JavascriptInterface
 		public void saveEvent(String eventTitle, String eventDate, String eventType, String attendValue, String eventDetails) { 
 			Log.i("JavaScript", "saveEvent called"); 
 			
-			//Create Intent
+			//Create Intent 
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 			emailIntent.setType("message/rfc822");
 			emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "efreestone@gmail.com" });
 			emailIntent.putExtra(Intent.EXTRA_SUBJECT, eventTitle);
 			emailIntent.putExtra(Intent.EXTRA_TEXT, eventTitle + "\n" + eventDate + "\n" + eventType + "\n" + attendValue + "\n" + eventDetails);
 			
-			startActivity(emailIntent);        
-		}                           
-		 
-		@JavascriptInterface        
-		public void test() {    
+			startActivity(emailIntent);                 
+		}                                          
+		  
+		@JavascriptInterface               
+		public void test() {      
 			Log.i("JavaScript", "Button Clicked!!");
-		}        
+		}          
 	} //EventAppInterface close    
 
 } 
