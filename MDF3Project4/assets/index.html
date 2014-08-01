@@ -16,12 +16,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- StyleSheets under here -->
-		<!-- <link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" type="text/css" /> -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> 
+		<!-- <link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css" type="text/css" /> -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<link rel="stylesheet" href="css/indexStyles.css" type="text/css" />
 
-		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
-		<script src="js/libs/modernizr.custom.min.js"></script>
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects 
+		<script src="js/libs/modernizr.custom.min.js"></script> -->
 		
 	</head>
 	
@@ -34,9 +34,9 @@
 				<span id="notice">* fields are required.</span>
 				<ul id="errors"></ul>
 				<ul data-role="content">
-		<!-- Event Description -->
-					<li><label for="eventInfo">*Event Title:</label>
-						<input type="text" name="eventInfo" id="eventInfo" value="" placeholder="Dads birthday, etc." class="required" data-role="none"/>
+		<!-- Event Title -->
+					<li><label for="eventTitle">*Event Title:</label>
+						<input type="text" name="eventTitle" id="eventTitle" value="" placeholder="Dads birthday, etc." class="required" data-role="none"/>
 					</li>
 		<!-- Date of Event -->
 					<li><label for="eventDate">*Event Date:</label>
@@ -73,7 +73,8 @@
 				<fieldset id="inputBottom" data-role="none">
 					<legend>Event Details</legend>
 		<!-- Event Details (ie location of party etc) -->
-					<label for="details"></label><textarea data-role="none" id="details" placeholder="Party Location, Contact Info, etc."></textarea>
+					<label for="eventDetails"></label>
+						<textarea data-role="none" id="eventDetails" placeholder="Party Location, Contact Info, etc."></textarea>
 				</fieldset>
 		<!-- Submit Button -->	
 				<input type="submit" value="Save Date!" id="submit" data-role="none" Data-ajax="false"/>
@@ -98,10 +99,12 @@
 	<!-- End of formErrors -->
 	
 	<!-- JavaScript and libs files -->
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> 
-	<!-- <script type="text/javascript" src="js/libs/jquery.mobile-1.4.3.min.js"></script>
-	<script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script> -->
+	<script type="text/javascript" src="js/main.js"></script> 
+	<script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script>
+	
+	<!-- <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
+	<script type="text/javascript" src="js/libs/jquery.mobile-1.4.3.min.js"></script>
 	<script type="text/javascript" src="js/libs/jquery-validate.min.js"></script>
 	
 	</body>

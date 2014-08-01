@@ -12,8 +12,12 @@ package com.elijahfreestone.mdf3project4;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -38,8 +42,38 @@ public class MainActivity extends Activity {
 		
 		//Grab web settings and enable javascript
 		WebSettings webSettings = myWebView.getSettings();
-		webSettings.setJavaScriptEnabled(true);             
+		webSettings.setJavaScriptEnabled(true);
+		
+		myWebView.addJavascriptInterface(new EventAppInterface(this), "Android");
   
-	}                            
+	} //onCreate close        
+	
+	public class EventAppInterface { 
+		Context myContext;       
+		
+		EventAppInterface(Context context) {
+			myContext = context; 
+			Log.i("JavaScript", "Interface Instantiated");
+		}          
+		
+		@JavascriptInterface
+		public void saveEvent(String eventTitle, String eventDate, String eventType, String attendValue, String eventDetails) { 
+			Log.i("JavaScript", "saveEvent called"); 
+			
+			//Create Intent
+			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+			emailIntent.setType("message/rfc822");
+			emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "efreestone@gmail.com" });
+			emailIntent.putExtra(Intent.EXTRA_SUBJECT, eventTitle);
+			emailIntent.putExtra(Intent.EXTRA_TEXT, eventTitle + "\n" + eventDate + "\n" + eventType + "\n" + attendValue + "\n" + eventDetails);
+			
+			startActivity(emailIntent);        
+		}                           
+		 
+		@JavascriptInterface        
+		public void test() {    
+			Log.i("JavaScript", "Button Clicked!!");
+		}        
+	} //EventAppInterface close    
 
-}
+} 

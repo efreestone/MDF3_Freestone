@@ -13,7 +13,7 @@ package com.elijahfreestone.mdf3project3;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap; 
+import java.util.HashMap;  
 
 import android.app.Activity; 
 import android.app.AlertDialog;
