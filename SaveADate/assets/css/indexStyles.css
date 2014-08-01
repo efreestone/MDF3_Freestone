@@ -1,0 +1,135 @@
+/*
+Elijah Freestone
+MDF3 1407
+Project 4
+7-30-14
+*/
+
+h1 { /* Logo on addItem and error404 */
+	text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1px;
+    margin-bottom: 4px;
+}
+
+h2 { /* Error img */
+	text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1px;
+    margin-bottom: 1px;
+}
+
+h3#errorMsg { /* Light box around error message */
+	background-color: #ccf5fd;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #172934;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    box-shadow: -3px 3px 8px 2px rgba(0,0,0,0.3);
+}
+
+span#notice { /* Required elements notice */
+	font-family: "Helvetica", "Arial";
+	color: #172934;
+    font-size: 85%;	
+    margin-left: 10px;
+    margin-bottom: -130px;
+}
+
+legend { /* Titles */
+    background-color: #f2fdff;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #172934;
+    padding: 2px 7px;
+    font-family: "Times New Roman", "Helvetica", "Arial";
+    color: #172934;
+    text-align: center;
+}
+
+fieldset#inputTop { /* Light colored box around top part of Input form */
+    background-color: #ccf5fd;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #172934;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    box-shadow: -3px 3px 8px 2px rgba(0,0,0,0.3);
+    /*-webkit-box-shadow: -1px 1px 1px 1px #172934;*/
+}
+
+fieldset#inputBottom { /* Light colored box around bottom part of Input form */
+    background-color: #ccf5fd;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #172934;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    box-shadow: -3px 3px 8px 2px rgba(0,0,0,0.3);
+}
+
+textarea { /* Event Details text box */
+    width: 90%;
+    height: 60px;
+    border: 1px solid #172934;
+    padding: 5px;
+    font-family: "Helvetica", "Arial";
+    font-size: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+input#submit { /* Save Date button on additem */
+    font-family: "Helvetica", "Arial", sans-serif;
+    display: inline-table;
+    text-align: center;
+    background: -webkit-gradient(linear, left top, left bottom, from(#05c331), to(#026f1b));
+    background-color: #026f1b;
+    color: #ffffff;
+    font-size: 200%;
+    padding: 10px 20%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #172934;
+    text-shadow: 0 -1px 0 #172934;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -3px 3px 8px 2px rgba(0,0,0,0.3);
+}
+
+input#reset { /* Browse by Event Type icons */
+	font-family: "Helvetica", "Arial", sans-serif;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	background: #fc0303;
+	border-radius: 10px;
+    border: solid 1px #172934;
+    color: #ffffff;
+}
+
+label.error { /* Validator error messages */
+	display: block;
+	margin: 10px 25px;
+	color: #fc0303;
+}
+
+#popErrors { /* Hide error a tag used for pop up error */
+	display: none;
+}
