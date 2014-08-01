@@ -13244,3 +13244,13 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.android.
 
 !ENTRY org.eclipse.core.net 1 0 2014-07-31 20:23:48.073
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-07-31 21:29:10.134 -----------------------------------------------
+eclipse.buildId=v22.3.0-887826
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product -keyring /Volumes/Second HD/elijahfreestone/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.android.ide.eclipse.adt.package.product -keyring /Volumes/Second HD/elijahfreestone/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-07-31 21:29:17.243
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
