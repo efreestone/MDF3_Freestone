@@ -92,8 +92,8 @@ public class MainActivity extends Activity {
 					+ eventDate + "\n" + eventType + "\n" + attendValue + "\n"
 					+ eventDetails);
 
-			startActivity(emailIntent); 
-		}                                                  
+			startActivity(emailIntent);
+		}                                                 
 	} //EventAppInterface close    
 
 } 

@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 		
 		//Grab web settings and enable javascript
 		WebSettings webSettings = myWebView.getSettings();
-		webSettings.setJavaScriptEnabled(true);  
+		webSettings.setJavaScriptEnabled(true);
 		
 		myWebView.addJavascriptInterface(new EventAppInterface(this), "Android");
   
@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
 		}            
 		
 		/*
-		 * Save event creates an Intent with variables input in webview.
+		 * Save event.
 		 *
 		 * @param eventTitle the event title
 		 * @param eventDate the event date
@@ -78,22 +78,26 @@ public class MainActivity extends Activity {
 		 * @param eventDetails the event details
 		 */
 		@JavascriptInterface
-		public void saveEvent(String eventTitle, String eventDate,
-				String eventType, String attendValue, String eventDetails) {
-			Log.i("JavaScript", "saveEvent called");
-
-			// Create Intent
+		public void saveEvent(String eventTitle, String eventDate, String eventType, String attendValue, String eventDetails) { 
+			Log.i("JavaScript", "saveEvent called"); 
+			
+			//Create Intent 
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 			emailIntent.setType("message/rfc822");
-			emailIntent.putExtra(Intent.EXTRA_EMAIL,
-					new String[] { "efreestone@gmail.com" });
+			emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "efreestone@gmail.com" });
 			emailIntent.putExtra(Intent.EXTRA_SUBJECT, eventTitle);
-			emailIntent.putExtra(Intent.EXTRA_TEXT, eventTitle + "\n"
-					+ eventDate + "\n" + eventType + "\n" + attendValue + "\n"
-					+ eventDetails);
-
-			startActivity(emailIntent); 
-		}                                                  
+			emailIntent.putExtra(Intent.EXTRA_TEXT, eventTitle + "\n" + eventDate + "\n" + eventType + "\n" + attendValue + "\n" + eventDetails);
+			
+			startActivity(emailIntent);                 
+		}                                          
+		  
+		/*
+		 * Test.
+		 */
+		@JavascriptInterface               
+		public void test() {      
+			Log.i("JavaScript", "Button Clicked!!");
+		}          
 	} //EventAppInterface close    
 
 } 

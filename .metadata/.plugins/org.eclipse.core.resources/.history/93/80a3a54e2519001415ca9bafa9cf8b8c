@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
 					+ eventDetails);
 
 			startActivity(emailIntent); 
-		}                                                  
+		}                                                 
 	} //EventAppInterface close    
 
 } 

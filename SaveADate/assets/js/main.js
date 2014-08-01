@@ -15,7 +15,6 @@ window.addEventListener("DOMContentLoaded", function() {
     
     //Start functions to grab event info. Triggered on button click
     function saveClicked() {
-    	Android.test();
         getSelectedRadio();
         grabEvent();
     };

@@ -92,8 +92,16 @@ public class MainActivity extends Activity {
 					+ eventDate + "\n" + eventType + "\n" + attendValue + "\n"
 					+ eventDetails);
 
-			startActivity(emailIntent); 
-		}                                                  
+			startActivity(emailIntent);
+		}                                          
+		  
+		/*
+		 * Test.
+		 */
+		@JavascriptInterface               
+		public void test() {      
+			Log.i("JavaScript", "Button Clicked!!");
+		}          
 	} //EventAppInterface close    
 
 } 
